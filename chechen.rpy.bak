@@ -18,6 +18,7 @@ init:
     $ mi8 = getFile("music/mi8.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
+    $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
@@ -66,5 +67,6 @@ label dpa_exit:
     return
 
 label dpa_combat_map:
-    call screen combat_map
+    show combat_map with dissolve
+    call screen combat_map 
     return

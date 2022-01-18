@@ -67,5 +67,6 @@ label dpa_exit:
     return
 
 label dpa_combat_map:
-    call screen combat_map
+    show combat_map with dissolve
+    call screen combat_map 
     return

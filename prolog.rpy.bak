@@ -1,5 +1,5 @@
 label prolog:
-    stop music
+    stop music fadeout 1
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     play music fon1
     show eltsin1 with dissolve2
@@ -99,5 +99,6 @@ label prolog:
     "Немного поговорив с ним он пригласил меня зайти в неё."
     "Войдя я увидел офицеров сидящих перед картой."
     "Командир подошел к карте и указал на ней:"
+    hide palatka with dissolve
     jump dpa_combat_map
     stop music
