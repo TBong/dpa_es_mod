@@ -37,7 +37,7 @@ label prolog:
     $ set_mode_adv()
     nvl clear
     
-    $ renpy.movie_cutscene("movie/movie1.webm")
+    $ renpy.movie_cutscene(getFile("movie/movie1.webm"))
     
     
     play sound mi8

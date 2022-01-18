@@ -1,36 +1,47 @@
+init -100 python:
+    to_steam = False
+    if to_steam == True:
+        default_dpa_path = ""
+    else:
+        default_dpa_path = "mods/dpa_es_mod/"
+
+init -99 python:
+    def getFile(file):
+        return default_dpa_path + file
+
 init:
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
-    $ fon1 = "mods/DPA/music/fon1.mp3"
-    $ mi8 = "mods/DPA/music/mi8.mp3"
-    $ uaz = "mods/DPA/music/uaz.mp3"
-    $ song1 = "mods/DPA/music/song1.mp3"
-    $ song2 = "mods/DPA/music/song2.mp3"
-    $ an12 = "mods/DPA/music/an12.mp3"
-    $ veter = "mods/DPA/music/veter.mp3"
+    $ fon1 = "music/fon1.mp3"
+    $ mi8 = "music/mi8.mp3"
+    $ uaz = "music/uaz.mp3"
+    $ song1 = "music/song1.mp3"
+    $ song2 = "music/song2.mp3"
+    $ an12 = "music/an12.mp3"
+    $ veter = "music/veter.mp3"
     
-    image gazeta1 = "mods/DPA/bg/gazeta1.jpg"
-    image 200 = "mods/DPA/bg/200.jpg"
-    image eltsin1 = "mods/DPA/bg/eltsin1.jpg"
-    image airport = "mods/DPA/bg/airport.jpg"
-    image airport1 = "mods/DPA/bg/airport1.jpg"
-    image airport2 = "mods/DPA/bg/airport2.jpg"
-    image cabina = "mods/DPA/bg/cabina.jpg"
-    image angar = "mods/DPA/bg/angar.jpg"
+    image gazeta1 = getFile("bg/gazeta1.jpg")
+    image 200 = "bg/200.jpg"
+    image eltsin1 = "bg/eltsin1.jpg"
+    image airport = "bg/airport.jpg"
+    image airport1 = "bg/airport1.jpg"
+    image airport2 = "bg/airport2.jpg"
+    image cabina = "bg/cabina.jpg"
+    image angar = "bg/angar.jpg"
 
     screen example_main_menu:
         tag menu
         modal True
-        add "mods/DPA/menu/fon.png"
+        add "menu/fon.png"
         imagebutton:
-            auto  "mods/DPA/menu/nachat_%s.png"
+            auto  "menu/nachat_%s.png"
             xpos 55
             ypos 200
             action Jump("prolog")
             
         imagebutton:
-            auto  "mods/DPA/menu/exit_%s.png"
+            auto  "menu/exit_%s.png"
             xpos 55
             ypos 602
             action Jump("dpa_exit")
