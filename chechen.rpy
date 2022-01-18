@@ -29,7 +29,6 @@ init:
     image airport2 = getFile("bg/airport2.jpg")
     image cabina = getFile("bg/cabina.jpg")
     image angar = getFile("bg/angar.jpg")
-    image test_map = getFile("menu/combat_map/test_map.png")
 
     screen example_main_menu:
         tag menu
@@ -46,12 +45,23 @@ init:
             xpos 55
             ypos 602
             action Jump("dpa_exit")
-        
     
+    screen combat_map:
+        imagemap:
+            ground getFile("menu/combat_map/test_map.png")
+            auto getFile("menu/combat_map/test_map_%s.png")
+            hotspot (657,482,35,35) action Jump("dpa_menu") alt Jump("prolog")
+            hotspot (772,474,40,47) action Jump("dpa_menu") alt Jump("prolog")
+            hotspot (901,397,50,45) action Jump("dpa_menu") alt Jump("prolog")
+            hotspot (986,377,50,42) action Jump("dpa_menu") alt Jump("prolog")
 
 label dpa_menu:
     call screen example_main_menu
     return
     
 label dpa_exit:
+    return
+
+label dpa_combat_map:
+    call screen combat_map
     return
