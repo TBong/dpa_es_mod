@@ -22,7 +22,7 @@ init:
     $ veter = getFile("music/veter.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
-    image 200 = getFile("bg/200.jpg")
+    image gruz200 = getFile("bg/gruz200.jpg")
     image eltsin1 = getFile("bg/eltsin1.jpg")
     image airport = getFile("bg/airport.jpg")
     image airport1 = getFile("bg/airport1.jpg")

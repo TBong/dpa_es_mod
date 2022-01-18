@@ -1,5 +1,5 @@
 init -100 python:
-    to_steam = True
+    to_steam = False
     if to_steam == True:
         default_dpa_path = ""
     else:
