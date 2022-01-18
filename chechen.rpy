@@ -1,3 +1,14 @@
+init -100 python:
+    to_steam = False
+    if to_steam == True:
+        default_dpa_path = ""
+    else:
+        default_dpa_path = "mods/DPA/"
+
+init -99 python:
+    def getFile(file):
+        return default_dpa_path + file
+
 init:
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
@@ -10,7 +21,7 @@ init:
     $ an12 = "music/an12.mp3"
     $ veter = "music/veter.mp3"
     
-    image gazeta1 = "bg/gazeta1.jpg"
+    image gazeta1 = getFile("bg/gazeta1.jpg")
     image 200 = "bg/200.jpg"
     image eltsin1 = "bg/eltsin1.jpg"
     image airport = "bg/airport.jpg"
