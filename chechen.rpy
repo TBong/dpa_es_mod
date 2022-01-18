@@ -46,7 +46,7 @@ init:
             auto getFile("menu/load_2_%s.png")
             xpos 55
             ypos 400
-            action Jump("prolog")
+            action Jump("dpa_Load")
         imagebutton:
             auto getFile("menu/gallery_2_%s_wip.png")
             xpos 55
@@ -78,4 +78,8 @@ label dpa_exit:
 label dpa_combat_map:
     show combat_map with dissolve
     call screen combat_map 
+    return
+    
+label dpa_Load:
+    call screen dpa_Load
     return
