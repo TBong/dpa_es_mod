@@ -18,6 +18,7 @@ init:
     $ mi8 = getFile("music/mi8.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
+    $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
@@ -58,6 +59,7 @@ init:
             hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
 
 label dpa_menu:
+    play music song_menu
     call screen example_main_menu
     return
     

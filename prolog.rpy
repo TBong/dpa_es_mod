@@ -1,4 +1,5 @@
 label prolog:
+    stop music fadeout 1
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     play music fon1
     show eltsin1 with dissolve2

@@ -13,7 +13,7 @@ init:
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
-    $ sol = Character (u'Командир полка', color="4f4031", what_color="fff")
+    $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
     $ fon1 = getFile("music/fon1.mp3")
     $ mi8 = getFile("music/mi8.mp3")
     $ uaz = getFile("music/uaz.mp3")
@@ -58,6 +58,7 @@ init:
             hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
 
 label dpa_menu:
+    play music song_menu
     call screen example_main_menu
     return
     
