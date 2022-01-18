@@ -58,16 +58,22 @@ screen dpa_Load:
         textbutton ["Загрузить игру"]:
             ypos 950
             xalign 0.5
+            text_style "text_save_load"
+            style "button_none"
             action FileLoad(selected_slot)
 
         textbutton ["Удалить"]:
             xpos 1500
             ypos 950
+            text_style "text_save_load"
+            style "button_none"
             action FileDelete(selected_slot)
 
         textbutton ["Назад"]:
             xpos 30
             ypos 950
+            text_style "text_save_load"
+            style "button_none"
             action Jump("dpa_menu")
 
         vbox:
@@ -78,8 +84,10 @@ screen dpa_Load:
                     textbutton str(i):
                         right_padding 55
                         text_size 60
+                        text_style "text_save_load"
+                        style "button_none"
                         xpos 32
-                        action (FilePage("dpa_menu_FilePage_"+ str(i)), SetVariable("selected_slot", False))
+                        action (FilePage(str(i)), SetVariable("selected_slot", False))
         grid 4 3:
             xpos 0.11
             ypos 0.2
@@ -97,6 +105,7 @@ screen dpa_Load:
                         action SetVariable("selected_slot", i)
                         xfill False
                         yfill False
+                        style "file_load_button"
                         fixed:
                             text ( "%s." % i
                                    + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])

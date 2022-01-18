@@ -9,8 +9,39 @@ init -99 python:
     def getFile(file):
         return default_dpa_path + file
 
+#styles
+init -98 python:
+    style.text_save_load                          = Style(style.default)
+    style.text_save_load.font                     = getFile("Furore.ttf")
+    style.text_save_load.size                     = 60
+    style.text_save_load.color                    = "#ffffff"
+    style.text_save_load.hover_color              = "#808080"
+    style.text_save_load.selected_color           = "#ffffff"
+    style.text_save_load.selected_idle_color      = "#ffffff"
+    style.text_save_load.selected_hover_color     = "#808080"
+    style.text_save_load.insensitive_color        = "#ffffff"
+
+    style.button_none = Style(style.button)
+    style.button_none.background = None
+    style.button_none.hover_background = None
+    style.button_none.selected_background = None
+    style.button_none.selected_hover_background = None
+    style.button_none.selected_idle_background = None
+
+    style.file_load_button = Style(style.button)
+    style.file_load_button.background = getFile("gui/load/load_Button_idle.png")
+    style.file_load_button.hover_background = getFile("gui/load/load_Button_hover.png")
+    style.file_load_button.selected_background = getFile("gui/load/load_Button_selected.png")
+    style.file_load_button.selected_hover_background = getFile("gui/load/load_Button_selected.png")
+    style.file_load_button.selected_idle_background = getFile("gui/load/load_Button_selected.png")
+
+# Идеи для названия: 
+#     "Первая, но не последняя"
+#     ""
+#     ""
+
 init:
-    $ mods["dpa_menu"]=u"Добро пожаловать в ад"
+    $ mods["first_dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
@@ -51,7 +82,7 @@ init:
             auto getFile("menu/gallery_2_%s_wip.png")
             xpos 55
             ypos 600
-            action Jump("prolog")
+            action Jump("wip_label")
         imagebutton:
             auto  getFile("menu/exit_2_%s.png")
             xpos 55
@@ -67,8 +98,13 @@ init:
             hotspot (901,397,50,45) action Jump("argun") alt Jump("prolog") #Аргун
             hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
 
-label dpa_menu:
+label first_dpa_menu:
     play music song_menu
+    jump dpa_menu
+
+label dpa_menu:
+    $ new_chapter(0, u"Меню DPA")
+    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     call screen example_main_menu
     return
     
@@ -82,4 +118,14 @@ label dpa_combat_map:
     
 label dpa_Load:
     call screen dpa_Load
+    return
+
+label wip_label:
+    "Данный функционал находится в разработке."
+    jump dpa_menu
+    return
+
+label th_demo_wip:
+    show bg black with dissolve2
+    "Благодарим за уделенное время. Это пока что только начало, мод находится в активной стадии разработки."
     return
