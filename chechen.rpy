@@ -38,15 +38,24 @@ init:
         modal True
         add getFile("menu/fon.png")
         imagebutton:
-            auto  getFile("menu/nachat_%s.png")
+            auto  getFile("menu/nachat_2_%s.png")
             xpos 55
             ypos 200
             action Jump("prolog")
-            
         imagebutton:
-            auto  getFile("menu/exit_%s.png")
+            auto getFile("menu/load_2_%s.png")
             xpos 55
-            ypos 602
+            ypos 400
+            action Jump("prolog")
+        imagebutton:
+            auto getFile("menu/gallery_2_%s_wip.png")
+            xpos 55
+            ypos 600
+            action Jump("prolog")
+        imagebutton:
+            auto  getFile("menu/exit_2_%s.png")
+            xpos 55
+            ypos 800
             action Jump("dpa_exit")
     
     screen combat_map:
