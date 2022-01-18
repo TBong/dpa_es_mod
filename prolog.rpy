@@ -1,6 +1,7 @@
 label prolog:
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     play music fon1
+    show test_map
     show eltsin1 with dissolve2
     elt "Дорогие сограждане!"
     elt "Сегодня 11 декабря 1994 г. на территории Чеченской Республики введены подразделения войск Министерства внутренних дел и Министерства обороны Российской Федерации."
