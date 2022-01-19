@@ -5,6 +5,11 @@ init -100 python:
     else:
         default_dpa_path = "mods/dpa_es_mod/"
 
+    def getLabelWIP(name):
+        if to_steam == True:
+            return "th_demo_wip"
+        return name
+
 init -99 python:
     def getFile(file):
         return default_dpa_path + file
@@ -41,7 +46,7 @@ init -98 python:
 #     ""
 
 init:
-    $ mods["first_dpa_menu"]=u"Добро пожаловать в ад"
+    $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
@@ -94,20 +99,13 @@ init:
         imagemap:
             ground getFile("menu/combat_map/test_map.png")
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Jump("th_demo_wip") alt Jump("prolog") #Бамут
-            hotspot (772,474,40,47) action Jump("th_demo_wip") alt Jump("prolog") #Урус-Мартан
-            hotspot (901,397,50,45) action Jump("th_demo_wip") alt Jump("prolog") #Аргун
-            hotspot (986,377,50,42) action Jump("th_demo_wip") alt Jump("prolog") #Гудермес
-            # hotspot (657,482,35,35) action Jump("bamut") alt Jump("prolog") #Бамут
-            # hotspot (772,474,40,47) action Jump("u_m") alt Jump("prolog") #Урус-Мартан
-            # hotspot (901,397,50,45) action Jump("argun") alt Jump("prolog") #Аргун
-            # hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
-
-label first_dpa_menu:
-    play music song_menu
-    jump dpa_menu
+            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") #Бамут
+            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") #Урус-Мартан
+            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") #Аргун
+            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
 
 label dpa_menu:
+    play music song_menu
     $ new_chapter(0, u"Меню DPA")
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     call screen example_main_menu
