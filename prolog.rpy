@@ -41,7 +41,7 @@ label prolog:
     
     $ renpy.movie_cutscene(getFile("movie/movie1.webm"))
     
-    $ new_chapter(0, u"Пролог \"Нчало\"")
+    $ new_chapter(0, u"Пролог \"Начало\"")
     play sound mi8
     play music song1 volume 0.3
     show airport with dissolve
