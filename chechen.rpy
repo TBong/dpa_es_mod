@@ -48,10 +48,13 @@ init -98 python:
 init:
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
+    $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
     $ fon1 = getFile("music/fon1.mp3")
     $ mi8 = getFile("music/mi8.mp3")
+    $ hit = getFile("music/hit.mp3")
+    $ mi8_1 = getFile("music/mi8_1.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
     $ song_menu = getFile("music/song_menu.mp3")
@@ -60,6 +63,8 @@ init:
     $ veter = getFile("music/veter.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
+    image mi8_in1 = getFile("bg/mi8_in1.jpg")
+    image mi8_in2 = getFile("bg/mi8_in2.jpg")
     image mi8 = getFile("bg/mi8.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
     image gruz200 = getFile("bg/gruz200.jpg")
@@ -104,6 +109,20 @@ init:
             hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") #Аргун
             hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
 
+    #эффекты
+    transform aonl_running:
+        anchor (0.0, 0.0) pos (0.0, 0.0)
+        linear 0.1 pos (-50, 50)
+        linear 0.1 pos (50, -50)
+        linear 0.1 pos (50, 50)
+        linear 0.1 pos (-50, -50)
+        repeat
+
+
+
+
+
+
 label dpa_menu:
     play music song_menu
     $ new_chapter(0, u"Меню DPA")
@@ -125,6 +144,7 @@ label wip_label:
     return
 
 label th_demo_wip:
-    show bg black with dissolve2
+    scene black with dissolve2
+    stop sound
     "Благодарим за уделенное время. Это пока что только начало, мод находится в активной стадии разработки."
     return
