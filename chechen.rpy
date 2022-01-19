@@ -77,7 +77,7 @@ init:
             auto getFile("menu/load_2_%s.png")
             xpos 55
             ypos 400
-            action Jump("dpa_Load")
+            action ShowMenu('dpa_Load')
         imagebutton:
             auto getFile("menu/gallery_2_%s_wip.png")
             xpos 55
@@ -93,10 +93,14 @@ init:
         imagemap:
             ground getFile("menu/combat_map/test_map.png")
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Jump("bamut") alt Jump("prolog") #Бамут
-            hotspot (772,474,40,47) action Jump("u_m") alt Jump("prolog") #Урус-Мартан
-            hotspot (901,397,50,45) action Jump("argun") alt Jump("prolog") #Аргун
-            hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
+            hotspot (657,482,35,35) action Jump("th_demo_wip") alt Jump("prolog") #Бамут
+            hotspot (772,474,40,47) action Jump("th_demo_wip") alt Jump("prolog") #Урус-Мартан
+            hotspot (901,397,50,45) action Jump("th_demo_wip") alt Jump("prolog") #Аргун
+            hotspot (986,377,50,42) action Jump("th_demo_wip") alt Jump("prolog") #Гудермес
+            # hotspot (657,482,35,35) action Jump("bamut") alt Jump("prolog") #Бамут
+            # hotspot (772,474,40,47) action Jump("u_m") alt Jump("prolog") #Урус-Мартан
+            # hotspot (901,397,50,45) action Jump("argun") alt Jump("prolog") #Аргун
+            # hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") #Гудермес
 
 label first_dpa_menu:
     play music song_menu
@@ -114,10 +118,6 @@ label dpa_exit:
 label dpa_combat_map:
     show combat_map with dissolve
     call screen combat_map 
-    return
-    
-label dpa_Load:
-    call screen dpa_Load
     return
 
 label wip_label:

@@ -12,9 +12,9 @@ init -80:
                 add getFile("gui/gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
 
                 imagebutton auto getFile("gui/gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-                imagebutton auto getFile("gui/gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('save') #тут свой путь
+                imagebutton auto getFile("gui/gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
                 imagebutton auto getFile("gui/gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-                imagebutton auto getFile("gui/gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('load') #тут свой путь
+                imagebutton auto getFile("gui/gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
 
                 if not config.skipping:
                     imagebutton auto getFile("gui/gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
@@ -32,9 +32,9 @@ init -80:
                 add getFile("gui/gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
 
                 imagebutton auto getFile("gui/gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-                imagebutton auto getFile("gui/gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('save') #тут свой путь
+                imagebutton auto getFile("gui/gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
                 imagebutton auto getFile("gui/gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-                imagebutton auto getFile("gui/gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('load') #тут свой путь
+                imagebutton auto getFile("gui/gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
 
                 if not config.skipping:
                     imagebutton auto getFile("gui/gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
@@ -43,9 +43,7 @@ init -80:
 
                 text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
                 if who:
-                    text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
-                    
-                    
+                    text who id "who" xpos 194 ypos 925 size 28 line_spacing 2             
                     
 screen dpa_Load:
     tag menu
@@ -74,7 +72,7 @@ screen dpa_Load:
             ypos 950
             text_style "text_save_load"
             style "button_none"
-            action Jump("dpa_menu")
+            action Return()
 
         vbox:
             xalign 0.037
@@ -112,4 +110,70 @@ screen dpa_Load:
                                    + "\n" +FileSaveName(i)):
                                 xpos 15
                                 ypos 15
-                                
+
+
+screen dpa_Save:
+    tag menu
+    modal True
+    window:
+        add getFile("gui/load/load_menu.jpg"):
+            xpos -4
+            ypos -4
+
+        textbutton ["Сохранить игру"]:
+            ypos 950
+            xalign 0.5
+            text_style "text_save_load"
+            style "button_none"
+            action FileSave(selected_slot)
+
+        textbutton ["Удалить"]:
+            xpos 1500
+            ypos 950
+            text_style "text_save_load"
+            style "button_none"
+            action FileDelete(selected_slot)
+
+        textbutton ["Назад"]:
+            xpos 30
+            ypos 950
+            text_style "text_save_load"
+            style "button_none"
+            action Return()
+
+        vbox:
+            xalign 0.037
+            yalign 0.52
+            grid 1 9:
+                for i in range(1, 10):
+                    textbutton str(i):
+                        right_padding 55
+                        text_size 60
+                        text_style "text_save_load"
+                        style "button_none"
+                        xpos 32
+                        action (FilePage(str(i)), SetVariable("selected_slot", False))
+        grid 4 3:
+            xpos 0.11
+            ypos 0.2
+            xmaximum 0.81
+            ymaximum 0.65
+            transpose False
+            xfill True
+            yfill True
+            for i in range(1, 13):
+                fixed:
+                    add FileScreenshot(i):
+                        xpos 10
+                        ypos 10
+                    button:
+                        action SetVariable("selected_slot", i)
+                        xfill False
+                        yfill False
+                        style "file_load_button"
+                        fixed:
+                            text ( "%s." % i
+                                   + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])
+                                   + "\n" +FileSaveName(i)):
+                                xpos 15
+                                ypos 15
