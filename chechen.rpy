@@ -55,6 +55,7 @@ init:
     $ veter = getFile("music/veter.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
+    image mi8 = getFile("bg/mi8.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
     image gruz200 = getFile("bg/gruz200.jpg")
     image eltsin1 = getFile("bg/eltsin1.jpg")

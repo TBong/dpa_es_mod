@@ -1,6 +1,6 @@
 label prolog:
-    stop music fadeout 1
-    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
+    $ new_chapter(0, u"Пролог \"...\"")
+    stop music fadeout 2
     play music fon1
     show eltsin1 with dissolve2
     elt "Дорогие сограждане!"
@@ -41,7 +41,7 @@ label prolog:
     
     $ renpy.movie_cutscene(getFile("movie/movie1.webm"))
     
-    
+    $ new_chapter(0, u"Пролог \"Нчало\"")
     play sound mi8
     play music song1 volume 0.3
     show airport with dissolve
