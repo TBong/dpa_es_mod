@@ -9,6 +9,10 @@ init -100 python:
         if to_steam == True:
             return "th_demo_wip"
         return name
+    
+    def canEventPlay(probability):
+        rolled = renpy.random.randint(1, 100)
+        return rolled == probability
 
 init -99 python:
     def getFile(file):
