@@ -9,6 +9,10 @@ init -100 python:
         if to_steam == True:
             return "th_demo_wip"
         return name
+    
+    def canEventPlay(probability):
+        rolled = renpy.random.randint(1, 100)
+        return rolled == probability
 
 init -99 python:
     def getFile(file):
@@ -51,12 +55,14 @@ init:
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
+    $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
     $ fon1 = getFile("music/fon1.mp3")
     $ mi8 = getFile("music/mi8.mp3")
     $ hit = getFile("music/hit.mp3")
     $ mi8_1 = getFile("music/mi8_1.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
+    $ song_ep = getFile("music/song1.mp3")
     $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
@@ -110,15 +116,22 @@ init:
             hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
 
     #эффекты
-    transform aonl_running:
+    transform fall:
         anchor (0.0, 0.0) pos (0.0, 0.0)
-        linear 0.1 pos (-21, -15)
-        linear 0.1 pos (0, 0)
-        linear 0.1 pos (21, -15)
-        linear 0.1 pos (0, 0)
+        linear 0.1 pos (-50, 50)
+        linear 0.1 pos (50, -50)
+        linear 0.1 pos (50, 50)
+        linear 0.1 pos (-50, -50)
         repeat
 
 
+
+    transform leap(dyz=0.01, dxz=0.005, dt=.4):
+        yzoom 1.0
+        easein dt*0.25 yzoom 1.0+dyz xzoom 1.0-dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
+        easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
 
 
 

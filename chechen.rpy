@@ -62,6 +62,7 @@ init:
     $ mi8_1 = getFile("music/mi8_1.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
+    $ song_ep = getFile("music/song_ep.mp3")
     $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
@@ -115,7 +116,7 @@ init:
             hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
 
     #эффекты
-    transform aonl_running:
+    transform fall:
         anchor (0.0, 0.0) pos (0.0, 0.0)
         linear 0.1 pos (-50, 50)
         linear 0.1 pos (50, -50)
@@ -124,6 +125,13 @@ init:
         repeat
 
 
+
+    transform leap(dyz=0.01, dxz=0.005, dt=.4):
+        yzoom 1.0
+        easein dt*0.25 yzoom 1.0+dyz xzoom 1.0-dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
+        easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
 
 
 

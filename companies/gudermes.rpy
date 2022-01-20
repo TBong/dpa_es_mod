@@ -1,5 +1,6 @@
 label gudermes:
     $ new_chapter(0, u"Пролог: \"Гудермес\"")
+    stop music fadeout 2
     show combat_map 
     "Гудермес."
     hide combat_map with dissolve
