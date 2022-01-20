@@ -1,3 +1,9 @@
+init -1 python:
+    def getXPos(num):
+        if num == 1:
+            return 42
+        return 32
+
 init -80:
     screen dpa_say_gui:
     #Экран диалога
@@ -84,7 +90,7 @@ screen dpa_Load:
                         text_size 60
                         text_style "text_save_load"
                         style "button_none"
-                        xpos 32
+                        xpos getXPos(i)
                         action (FilePage(str(i)), SetVariable("selected_slot", False))
         grid 4 3:
             xpos 0.11
@@ -151,7 +157,7 @@ screen dpa_Save:
                         text_size 60
                         text_style "text_save_load"
                         style "button_none"
-                        xpos 32
+                        xpos getXPos(i)
                         action (FilePage(str(i)), SetVariable("selected_slot", False))
         grid 4 3:
             xpos 0.11
