@@ -51,6 +51,7 @@ init:
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
+    $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
     $ fon1 = getFile("music/fon1.mp3")
     $ mi8 = getFile("music/mi8.mp3")
     $ hit = getFile("music/hit.mp3")
