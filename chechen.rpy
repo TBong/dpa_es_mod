@@ -14,9 +14,20 @@ init -100 python:
         rolled = renpy.random.randint(1, 100)
         return rolled == probability
 
+    def getRandomPick():
+        pick_weight = renpy.random.randint(0, 5)
+        if pick_weight == 0: 
+            return getFile("menu/combat_map/test_map.png")
+        return getFile("menu/combat_map/test_map.png")
+
+
 init -99 python:
     def getFile(file):
         return default_dpa_path + file
+        
+
+
+
 
 #styles
 init -98 python:
@@ -43,6 +54,10 @@ init -98 python:
     style.file_load_button.selected_background = getFile("gui/load/load_Button_selected.png")
     style.file_load_button.selected_hover_background = getFile("gui/load/load_Button_selected.png")
     style.file_load_button.selected_idle_background = getFile("gui/load/load_Button_selected.png")
+
+
+
+
 
 # Идеи для названия: 
 #     "Первая, но не последняя"
@@ -85,6 +100,7 @@ init:
         tag menu
         modal True
         add getFile("menu/fon.png")
+
         imagebutton:
             auto  getFile("menu/nachat_2_%s.png")
             xpos 55
