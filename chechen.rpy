@@ -14,9 +14,20 @@ init -100 python:
         rolled = renpy.random.randint(1, 100)
         return rolled == probability
 
+    def getRandomPick():
+        pick_weight = renpy.random.randint(0, 5)
+        if pick_weight == 0: 
+            return getFile("menu/combat_map/test_map.png")
+        return getFile("menu/combat_map/test_map.png")
+
+
 init -99 python:
     def getFile(file):
         return default_dpa_path + file
+        
+
+
+
 
 #styles
 init -98 python:
@@ -44,6 +55,10 @@ init -98 python:
     style.file_load_button.selected_hover_background = getFile("gui/load/load_Button_selected.png")
     style.file_load_button.selected_idle_background = getFile("gui/load/load_Button_selected.png")
 
+
+
+
+
 # Идеи для названия: 
 #     "Первая, но не последняя"
 #     ""
@@ -63,6 +78,7 @@ init:
     $ mi8_1 = getFile("music/mi8_1.mp3")
     $ uaz = getFile("music/uaz.mp3")
     $ song1 = getFile("music/song1.mp3")
+    $ song_ep = getFile("music/song_ep.mp3")
     $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
@@ -85,6 +101,7 @@ init:
         tag menu
         modal True
         add getFile("menu/fon.png")
+
         imagebutton:
             auto  getFile("menu/nachat_2_%s.png")
             xpos 55
@@ -116,7 +133,7 @@ init:
             hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
 
     #эффекты
-    transform aonl_running:
+    transform fall:
         anchor (0.0, 0.0) pos (0.0, 0.0)
         linear 0.1 pos (-50, 50)
         linear 0.1 pos (50, -50)
@@ -125,6 +142,13 @@ init:
         repeat
 
 
+
+    transform leap(dyz=0.01, dxz=0.005, dt=.4):
+        yzoom 1.0
+        easein dt*0.25 yzoom 1.0+dyz xzoom 1.0-dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
+        easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
+        easeout dt*0.25 yzoom 1.0 xzoom 1.0
 
 
 
