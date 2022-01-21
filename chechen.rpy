@@ -5,6 +5,12 @@ init -100 python:
     else:
         default_dpa_path = "mods/dpa_es_mod/"
 
+
+
+init -99 python:
+    def getFile(file):
+        return default_dpa_path + file
+
     def getLabelWIP(name):
         if to_steam == True:
             return "th_demo_wip"
@@ -14,19 +20,9 @@ init -100 python:
         rolled = renpy.random.randint(1, 100)
         return rolled == probability
 
-    def getRandomPick():
-        pick_weight = renpy.random.randint(0, 5)
-        if pick_weight == 0: 
-            return getFile("menu/combat_map/test_map.png")
-        return getFile("menu/combat_map/test_map.png")
-
-
-init -99 python:
-    def getFile(file):
-        return default_dpa_path + file
-        
-
-
+    def getRandomPick(images):
+        pick_weight = renpy.random.randint(0, len(images)-1)
+        return images[pick_weight]       
 
 
 #styles
@@ -56,7 +52,9 @@ init -98 python:
     style.file_load_button.selected_idle_background = getFile("gui/load/load_Button_selected.png")
 
 
-
+# $ randImg = getRandomPick(["mi8_in1","gazeta1"])
+# $ renpy.show(randImg)
+# $ renpy.hide(randImg) 
 
 
 # Идеи для названия: 
@@ -66,12 +64,18 @@ init -98 python:
 
 init:
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
+    #
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
+    $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
-    $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
+    #
+    $ sol_gen = Character(u"Солдат",color="288110",what_color="fff")
+    $ gen = Character(u"Генадий",color="288110",what_color="fff")
+    #
     $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
     $ ggnvl = Character (u'Саша',color="ddde4e", kind=nvl)
+
     $ fon1 = getFile("music/fon1.mp3")
     $ mi8 = getFile("music/mi8.mp3")
     $ hit = getFile("music/hit.mp3")
@@ -100,7 +104,7 @@ init:
     screen example_main_menu:
         tag menu
         modal True
-        add getFile("menu/fon.png")
+        add getFile(getRandomPick(["gui/load/load_menu.jpg","menu/fon.png"]))
 
         imagebutton:
             auto  getFile("menu/nachat_2_%s.png")
