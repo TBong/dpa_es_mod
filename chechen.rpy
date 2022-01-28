@@ -22,7 +22,9 @@ init -99 python:
 
     def getRandomPick(images):
         pick_weight = renpy.random.randint(0, len(images)-1)
-        return images[pick_weight]       
+        return images[pick_weight]
+
+    brokenFont = getFile("old-fax.ttf")
 
 
 #styles
@@ -67,6 +69,7 @@ init:
     #
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
+    $ ofic = Character (u'Офицер', color="e3b212", what_color="fff")
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
     #
@@ -87,6 +90,7 @@ init:
     $ song2 = getFile("music/song2.mp3")
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
+    $ pencil = getFile("music/pencil-scratches.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
     image mi8_in1 = getFile("bg/mi8_in1.jpg")
@@ -131,10 +135,10 @@ init:
         imagemap:
             ground getFile("menu/combat_map/test_map.png")
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") #Бамут
-            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") #Урус-Мартан
-            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") #Аргун
-            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") #Гудермес
+            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Бамут
+            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Урус-Мартан
+            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Аргун
+            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Гудермес
 
     #эффекты
     transform fall:
