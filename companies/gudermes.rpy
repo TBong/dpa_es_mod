@@ -1,4 +1,9 @@
 label gudermes:
+    jump gudermes_prolog
+    jump th_demo_wip
+    return
+
+label gudermes_prolog:
     $ new_chapter(0, u"Пролог: \"Гудермес\"")
     stop music fadeout 2
     show combat_map 
@@ -60,13 +65,18 @@ label gudermes:
     "Я попытался проснуться{w}, не получилось, сон не хотел отпускать меня. Но мириться я с этим не собирался, пытался снова и снова, снова и снова, но четно..."
     $ set_mode_adv()
     nvl clear
+    jump gudermes_day1
+    return
+
+label gudermes_day1:
     $ new_chapter(0, u"Гудермес день 1: \"Начало\"")
-    show angar with dissolve
+    scene angar with dissolve
     "Получилось только под утро. После подобных кошмаров на утро чувствуешь себя не ладно во всех смыслах, но сегодняшним утром единсвенным последствием было какая то липкая тягота в разуме."
     play music song_rising_sun volume 0.8 fadein 2
     "От того что бы начать переваривать всю эту странную ситуацию меня отвлек хлопок по плечу."
     sol_gen "Что хмурной такой?"
     "Я обернулся и увидел перед собой сбитого и коренастого молодого парня, с огромной лыбой на перевес, наверное года на два младьше."
+    show gen ordin smile with slideleft
     # Нужен спрайт для Гены
     gg "Невыспался малех."
     sol_gen "Верю, такая же бодяга. Как зовут то хоть?"
@@ -181,3 +191,4 @@ label gudermes:
     "Прибыли. Один паренек даже закимарил."
     $ new_chapter(0, u"Гудермес день 1: \"Вокзал\"")
     jump th_demo_wip
+    return

@@ -1,4 +1,9 @@
 label argun:
+    call argun_prolog
+    call argun_day1
+    return
+
+label argun_prolog:
     $ new_chapter(0, u"Пролог: \"Аргун\"")
     show combat_map with dissolve
     jump th_demo_wip
@@ -27,7 +32,9 @@ label argun:
     
     "И снились мне ребята, которых выгружали из вертушки."
     "Ведь только школу окончили, а уже на войне погибли."
-    
+    return
+
+label argun_day1:
     $ new_chapter(0, u"Аргун день 1:\"Вылет\"")
     show mi8 with dissolve
     "Утром мы уже грузились на «Борт»."
@@ -75,6 +82,7 @@ label argun:
     th "Конец так конец..."
     #титры xD
     hide anim prolog_1 with dissolve
+    return
     
 
     

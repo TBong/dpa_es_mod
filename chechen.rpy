@@ -20,11 +20,35 @@ init -99 python:
         rolled = renpy.random.randint(1, 100)
         return rolled == probability
 
-    def getRandomPick(images):
-        pick_weight = renpy.random.randint(0, len(images)-1)
-        return images[pick_weight]
+    def getRandomPick(image):
+        pick_weight = renpy.random.randint(0, len(image)-1)
+        return image[pick_weight]
 
     brokenFont = getFile("old-fax.ttf")
+
+    def bakeSprite(sizeX, sizeY, posX, posY, clothes, character, emo):
+        return ConditionSwitch(
+        "persistent.sprite_time=='day'",
+        im.MatrixColor( 
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/gen/"+character),
+            (posX,posY), getFile("image/sprites/gen/emo/"+emo)), 
+            im.matrix.tint(0.83, 0.88, 0.92)),
+        "persistent.sprite_time=='sunset'",
+        im.MatrixColor( 
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/gen/"+character),
+            (posX,posY), getFile("image/sprites/gen/emo/"+emo)), 
+            im.matrix.tint(0.83, 0.88, 0.92)),
+        "persistent.sprite_time=='night'",
+        im.MatrixColor( 
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/gen/"+character),
+            (posX,posY), getFile("image/sprites/gen/emo/"+emo)), 
+            im.matrix.tint(0.83, 0.88, 0.92)))
 
 
 #styles
@@ -111,13 +135,15 @@ init:
     image train = getFile("image/cg/train.png")
     image train_open = getFile("image/cg/train_open.png")
 
-
     image train_inside_pic = getFile("image/bg/int_train.jpg")
     image cabina = getFile("image/bg/cabina.jpg")
     image angar = getFile("image/bg/angar.jpg")
     image goriScetch = getFile("image/bg/goriScetch.jpg")
     image mi8_in1 = getFile("image/bg/mi8_in1.jpg")
     image palatka = getFile("image/bg/palatka.jpg")
+
+    image gen ordin smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core.png","gen/emo/gen_ord_smile.png")
+    
 
     screen example_main_menu:
         tag menu
@@ -180,6 +206,7 @@ label dpa_menu:
     play music song_menu
     $ new_chapter(0, u"Меню DPA")
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
+    $ persistent.sprite_time = "day"
     call screen example_main_menu
     return
     

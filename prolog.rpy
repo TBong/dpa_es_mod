@@ -101,5 +101,5 @@ label prolog:
     "Командир подошел к карте и указал на ней:"
     hide palatka with dissolve
     stop music fadeout 2
-    jump dpa_combat_map
     stop music
+    jump dpa_combat_map
