@@ -1,5 +1,5 @@
 init -100 python:
-    to_steam = False
+    to_steam = True
     if to_steam == True:
         default_dpa_path = ""
     else:
@@ -92,31 +92,32 @@ init:
     $ song_na_mozdok = getFile("music/song_na_mozdok.mp3")
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
+    $ song_rising_sun = getFile("music/song_rising_sun.mp3")
     $ pencil = getFile("music/pencil-scratches.mp3")
     $ hitting_iron = getFile("music/hitting_iron.mp3")
     $ train_inside_music = getFile("music/train_inside.mp3")
     
-    image gazeta1 = getFile("bg/gazeta1.jpg")
-    image futbol1 = getFile("bg/futbol1.jpg")
-    image mi8_in2 = getFile("bg/mi8_in2.jpg")
-    image mi8 = getFile("bg/mi8.jpg")
-    image grib = getFile("bg/grib.jpg")
-    image forest = getFile("bg/forest.jpg")
+    image gazeta1 = getFile("image/cg/gazeta1.jpg")
+    image futbol1 = getFile("image/cg/futbol1.jpg")
+    image mi8_in2 = getFile("image/cg/mi8_in2.jpg")
+    image mi8 = getFile("image/cg/mi8.jpg")
+    image grib = getFile("image/cg/grib.jpg")
+    image forest = getFile("image/cg/forest.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
-    image gruz200 = getFile("bg/gruz200.jpg")
-    image eltsin1 = getFile("bg/eltsin1.jpg")
-    image airport = getFile("bg/airport.jpg")
-    image airport1 = getFile("bg/airport1.jpg")
-    image train = getFile("bg/train.png")
-    image train_open = getFile("bg/train_open.png")
+    image gruz200 = getFile("image/cg/gruz200.jpg")
+    image eltsin1 = getFile("image/cg/eltsin1.jpg")
+    image airport = getFile("image/cg/airport.jpg")
+    image airport1 = getFile("image/cg/airport1.jpg")
+    image train = getFile("image/cg/train.png")
+    image train_open = getFile("image/cg/train_open.png")
 
 
-    image train_inside_pic = getFile("bg/int_train.jpg")
-    image cabina = getFile("bg/cabina.jpg")
-    image angar = getFile("bg/angar.jpg")
-    image goriScetch = getFile("bg/goriScetch.jpg")
-    image mi8_in1 = getFile("bg/mi8_in1.jpg")
-    image palatka = getFile("bg/palatka.jpg")
+    image train_inside_pic = getFile("image/bg/int_train.jpg")
+    image cabina = getFile("image/bg/cabina.jpg")
+    image angar = getFile("image/bg/angar.jpg")
+    image goriScetch = getFile("image/bg/goriScetch.jpg")
+    image mi8_in1 = getFile("image/bg/mi8_in1.jpg")
+    image palatka = getFile("image/bg/palatka.jpg")
 
     screen example_main_menu:
         tag menu
@@ -151,7 +152,7 @@ init:
             hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
             hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
             hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
-            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") hover_sound pencil #Гудермес
+            hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
 
     #эффекты
     transform fall:

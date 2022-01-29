@@ -88,6 +88,8 @@ init:
     $ song_ep = getFile("music/song_ep.mp3")
     $ song_menu = getFile("music/song_menu.mp3")
     $ song2 = getFile("music/song2.mp3")
+    $ song_liric = getFile("music/song_liric.mp3")
+    $ song_liric2 = getFile("music/song_liric2.mp3")
     $ song_gruz200 = getFile("music/song_gruz200.mp3")
     $ song_na_mozdok = getFile("music/song_na_mozdok.mp3")
     $ an12 = getFile("music/an12.mp3")
@@ -152,7 +154,7 @@ init:
             hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
             hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
             hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
-            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") hover_sound pencil #Гудермес
+            hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
 
     #эффекты
     transform fall:
