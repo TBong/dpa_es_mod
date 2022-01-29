@@ -92,6 +92,7 @@ init:
     $ veter = getFile("music/veter.mp3")
     $ pencil = getFile("music/pencil-scratches.mp3")
     $ hitting_iron = getFile("music/hitting_iron.mp3")
+    $ train_inside_music = getFile("music/train_inside.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
     image futbol1 = getFile("bg/futbol1.jpg")
@@ -109,7 +110,7 @@ init:
     image goriScetch = getFile("bg/goriScetch.jpg")
     image train = getFile("bg/train.png")
     image train_open = getFile("bg/train_open.png")
-    image train_inside = getFile("bg/train_inside.png")
+    image train_inside_pic = getFile("bg/int_train.jpg")
 
     screen example_main_menu:
         tag menu
@@ -141,10 +142,10 @@ init:
         imagemap:
             ground getFile("menu/combat_map/test_map.png")
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Бамут
-            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Урус-Мартан
-            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Аргун
-            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") hover_sound getFile("music/pencil-scratches.mp3") #Гудермес
+            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
+            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
+            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
+            hotspot (986,377,50,42) action Jump(getLabelWIP("gudermes")) alt Jump("prolog") hover_sound pencil #Гудермес
 
     #эффекты
     transform fall:
@@ -155,7 +156,10 @@ init:
         linear 0.1 pos (-50, -50)
         repeat
 
-
+    transform zoom_to_center:
+        zoom 1.2
+        zoom 1.6
+        zoom 2.0
 
     transform leap(dyz=0.01, dxz=0.005, dt=.4):
         yzoom 1.0
