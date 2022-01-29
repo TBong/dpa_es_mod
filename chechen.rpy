@@ -104,6 +104,7 @@ init:
     image airport1 = getFile("bg/airport1.jpg")
     image cabina = getFile("bg/cabina.jpg")
     image angar = getFile("bg/angar.jpg")
+    image goriScetch = getFile("bg/goriScetch.jpg")
 
     screen example_main_menu:
         tag menu
