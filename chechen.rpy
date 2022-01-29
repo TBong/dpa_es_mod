@@ -92,6 +92,7 @@ init:
     $ song_na_mozdok = getFile("music/song_na_mozdok.mp3")
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
+    $ song_rising_sun = getFile("music/song_rising_sun.mp3")
     $ pencil = getFile("music/pencil-scratches.mp3")
     $ hitting_iron = getFile("music/hitting_iron.mp3")
     $ train_inside_music = getFile("music/train_inside.mp3")
