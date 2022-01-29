@@ -99,6 +99,8 @@ init:
     image mi8_in1 = getFile("bg/mi8_in1.jpg")
     image mi8_in2 = getFile("bg/mi8_in2.jpg")
     image mi8 = getFile("bg/mi8.jpg")
+    image grib = getFile("bg/grib.jpg")
+    image forest = getFile("bg/forest.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
     image gruz200 = getFile("bg/gruz200.jpg")
     image eltsin1 = getFile("bg/eltsin1.jpg")
