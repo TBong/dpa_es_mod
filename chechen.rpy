@@ -156,10 +156,8 @@ init:
         linear 0.1 pos (-50, -50)
         repeat
 
-    transform zoom_to_center:
-        zoom 1.2
-        zoom 1.6
-        zoom 2.0
+    transform zoom_to(time=1, an_x=0.5, an_y=0.5, zoom_value=2):
+        linear time zoom zoom_value anchor(an_x,an_y)
 
     transform leap(dyz=0.01, dxz=0.005, dt=.4):
         yzoom 1.0

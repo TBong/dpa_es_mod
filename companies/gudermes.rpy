@@ -100,7 +100,7 @@ label gudermes:
     show train with dissolve
     ofic "Загружайтесь."
     play sound hitting_iron
-    show train_open with dissolve
+    show train_open at zoom_to(4,0.20,0.34,2) with dissolve
     hide train with dissolve
     "Мы с Геной и ещё тремя парнями прыгнули в грузовой вагон. Странный выбор транспорта, ну наверно так надо.{w} Возможно я единственный заметил что с губ офицера сорвался шепот..."
     hide train_open with dissolve2
