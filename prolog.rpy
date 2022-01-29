@@ -100,6 +100,6 @@ label prolog:
     "Войдя я увидел офицеров сидящих перед картой."
     "Командир подошел к карте и указал на ней:"
     hide palatka with dissolve
-    stop sound fadeout 2
+    stop music fadeout 2
     jump dpa_combat_map
     stop music
