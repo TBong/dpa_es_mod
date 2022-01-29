@@ -26,28 +26,34 @@ init -99 python:
 
     brokenFont = getFile("old-fax.ttf")
 
-    def bakeSprite(sizeX, sizeY, posX, posY, clothes, character, emo):
+    def bakeSprite(sizeX, sizeY, posX, posY, clothes, character, emo, other1, other2):
         return ConditionSwitch(
         "persistent.sprite_time=='day'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
             (posX,posY), getFile("image/sprites/"+clothes),
-            (posX,posY), getFile("image/sprites/gen/"+character),
-            (posX,posY), getFile("image/sprites/gen/emo/"+emo)), 
+            (posX,posY), getFile("image/sprites/"+character),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/"+other1),
+            (posX,posY), getFile("image/sprites/"+other2)),
             im.matrix.tint(0.83, 0.88, 0.92)),
         "persistent.sprite_time=='sunset'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
             (posX,posY), getFile("image/sprites/"+clothes),
             (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/"+emo)), 
+            (posX,posY), getFile("image/sprites/"+emo), 
+            (posX,posY), getFile("image/sprites/"+other1),
+            (posX,posY), getFile("image/sprites/"+other2)),
             im.matrix.tint(0.83, 0.88, 0.92)),
         "persistent.sprite_time=='night'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
             (posX,posY), getFile("image/sprites/"+clothes),
             (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/"+emo)), 
+            (posX,posY), getFile("image/sprites/"+emo), 
+            (posX,posY), getFile("image/sprites/"+other1),
+            (posX,posY), getFile("image/sprites/"+other2)),
             im.matrix.tint(0.83, 0.88, 0.92)))
 
 
@@ -144,7 +150,7 @@ init:
     image mi8_in1 = getFile("image/bg/mi8_in1.jpg")
     image palatka = getFile("image/bg/palatka.jpg")
 
-    image gen ordin smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core.png","gen/emo/gen_ord_smile.png")
+    image gen ordin smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core.png","gen/emo/gen_ord_smile.png", "belt_w_plus_a.png", "null.png")
     
 
     screen example_main_menu:
