@@ -93,6 +93,7 @@ init:
     $ pencil = getFile("music/pencil-scratches.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
+    image futbol1 = getFile("bg/futbol1.jpg")
     image mi8_in1 = getFile("bg/mi8_in1.jpg")
     image mi8_in2 = getFile("bg/mi8_in2.jpg")
     image mi8 = getFile("bg/mi8.jpg")
