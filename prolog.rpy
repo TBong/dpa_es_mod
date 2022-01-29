@@ -90,7 +90,7 @@ label prolog:
     "Быстро развели костер и сварили в большом ведре суп из сухпая."
     hide angar with dissolve
     stop sound fadeout 1
-    play music song2 fadein 1
+    play music song2 volume 0.5 fadein 1
     show airport with dissolve
     "Позавтракав, я отправился на поиски командира полка, для того чтобы узнать куда меня отправят."
     hide airport with dissolve
@@ -100,5 +100,6 @@ label prolog:
     "Войдя я увидел офицеров сидящих перед картой."
     "Командир подошел к карте и указал на ней:"
     hide palatka with dissolve
+    stop sound fadeout 2
     jump dpa_combat_map
     stop music
