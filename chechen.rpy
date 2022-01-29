@@ -91,6 +91,7 @@ init:
     $ an12 = getFile("music/an12.mp3")
     $ veter = getFile("music/veter.mp3")
     $ pencil = getFile("music/pencil-scratches.mp3")
+    $ hitting_iron = getFile("music/hitting_iron.mp3")
     
     image gazeta1 = getFile("bg/gazeta1.jpg")
     image mi8_in1 = getFile("bg/mi8_in1.jpg")
@@ -105,6 +106,9 @@ init:
     image cabina = getFile("bg/cabina.jpg")
     image angar = getFile("bg/angar.jpg")
     image goriScetch = getFile("bg/goriScetch.jpg")
+    image train = getFile("bg/train.png")
+    image train_open = getFile("bg/train_open.png")
+    image train_inside = getFile("bg/train_inside.png")
 
     screen example_main_menu:
         tag menu
