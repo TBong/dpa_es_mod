@@ -163,7 +163,8 @@ init:
     )
 
     image gen ordin_smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_ord_smile.png", "belt_w_plus_a.png", "null.png")
-    image gen mournful = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_mournful.png", "belt_w_plus_a.png", "null.png")
+    image gen mournful = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_mournful_eye_fix.png", "belt_w_plus_a.png", "null.png")
+    image gen laught = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_laught.png", "belt_w_plus_a.png", "null.png")
 
 
     screen example_main_menu:
