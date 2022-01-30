@@ -4,6 +4,8 @@ init -100 python:
         default_dpa_path = ""
     else:
         default_dpa_path = "mods/dpa_es_mod/"
+    
+    ch_memories = "default"
 
 
 
@@ -130,11 +132,12 @@ init:
     $ train_inside_music = getFile("music/train_inside.mp3")
     
     image gazeta1 = getFile("image/cg/gazeta1.jpg")
-    image futbol1 = getFile("image/cg/futbol1.jpg")
+    image futbol1_cg = getFile("image/cg/futbol1.jpg")
+    image grib_cg = getFile("image/cg/grib.jpg")
+    image forest_cg = getFile("image/cg/forest.jpg")
+    image stadion_cg = getFile("image/cg/stadion.jpg")
     image mi8_in2 = getFile("image/cg/mi8_in2.jpg")
     image mi8 = getFile("image/cg/mi8.jpg")
-    image grib = getFile("image/cg/grib.jpg")
-    image forest = getFile("image/cg/forest.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
     image gruz200 = getFile("image/cg/gruz200.jpg")
     image eltsin1 = getFile("image/cg/eltsin1.jpg")
@@ -150,8 +153,18 @@ init:
     image mi8_in1 = getFile("image/bg/mi8_in1.jpg")
     image palatka = getFile("image/bg/palatka.jpg")
 
-    image gen ordin smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core.png","gen/emo/gen_ord_smile.png", "belt_w_plus_a.png", "null.png")
     
+    image childhood_memories = ConditionSwitch(
+        "ch_memories=='grib'", "grib_cg",
+        "ch_memories=='futbol1'", "futbol1_cg",
+        "ch_memories=='forest'", "forest_cg",
+        "ch_memories=='stadion'","stadion_cg",
+        True, "angar"
+    )
+
+    image gen ordin_smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_ord_smile.png", "belt_w_plus_a.png", "null.png")
+    image gen mournful = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_mournful.png", "belt_w_plus_a.png", "null.png")
+
 
     screen example_main_menu:
         tag menu
