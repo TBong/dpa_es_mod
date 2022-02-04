@@ -239,7 +239,7 @@ init:
             auto  getFile("menu/exit_2_%s.png")
             xpos 55
             ypos 800
-            action Jump("dpa_exit")
+            action Return()
     
     screen combat_map:
         imagemap:
