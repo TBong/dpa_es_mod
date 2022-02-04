@@ -31,6 +31,7 @@ init -99 python:
         return image[pick_weight]
 
     brokenFont = getFile("old-fax.ttf")
+    furore = getFile("Furore.ttf")
     
     def bakeSpriteDefaultSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
         return ConditionSwitch(
@@ -143,6 +144,9 @@ init -98 python:
 #     ""
 
 init:
+    if to_steam == False:
+        define config.developer = True
+
     $ mods["dpa_menu"]=u"Добро пожаловать в ад"
     #
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
@@ -179,6 +183,7 @@ init:
     $ hitting_iron = getFile("music/hitting_iron.mp3")
     $ train_inside_music = getFile("music/train_inside.mp3")
     
+    image menu_back = getFile(getRandomPick(["gui/load/load_menu.jpg","menu/fon.png"]))
     image gazeta1 = getFile("image/cg/gazeta1_draw.jpg")
     image futbol1_cg = getFile("image/cg/futbol1.jpg")
     image grib_cg = getFile("image/cg/grib_draw.jpg")
@@ -222,13 +227,12 @@ init:
     screen example_main_menu:
         tag menu
         modal True
-        add getFile(getRandomPick(["gui/load/load_menu.jpg","menu/fon.png"]))
-
+        add getFile("menu/fon_text.png")
         imagebutton:
             auto  getFile("menu/nachat_2_%s.png")
             xpos 55
             ypos 200
-            action Jump("prolog")
+            action (Hide("example_main_menu")), (Call("prolog"))
         imagebutton:
             auto getFile("menu/load_2_%s.png")
             xpos 55
@@ -238,12 +242,20 @@ init:
             auto getFile("menu/gallery_2_%s_wip.png")
             xpos 55
             ypos 600
-            action Jump("wip_label")
+            action NullAction()
         imagebutton:
             auto  getFile("menu/exit_2_%s.png")
             xpos 55
             ypos 800
             action Return()
+        text "{font=[furore]}Добро пожаловать в":
+            xpos 1000
+            ypos 33
+            size 58
+        text "{font=[furore]}{color=#911010}АД":
+            xpos 1350
+            ypos 80
+            size 70
     
     screen combat_map:
         imagemap:
@@ -279,6 +291,7 @@ label dpa_menu:
     $ new_chapter(0, u"Меню DPA")
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     $ persistent.sprite_time = "day"
+    scene menu_back with dissolve2
     call screen example_main_menu
     return
 

@@ -55,7 +55,7 @@ screen dpa_Load:
     tag menu
     modal True
     window:
-        add getFile("gui/load/load_menu.jpg"):
+        add "menu_back":
             xpos -4
             ypos -4
 
@@ -122,7 +122,7 @@ screen dpa_Save:
     tag menu
     modal True
     window:
-        add getFile("gui/load/load_menu.jpg"):
+        add "menu_back":
             xpos -4
             ypos -4
 
