@@ -27,36 +27,78 @@ init -99 python:
         return image[pick_weight]
 
     brokenFont = getFile("old-fax.ttf")
-
-    def bakeSprite(sizeX, sizeY, posX, posY, clothes, character, emo, other1, other2):
+    
+    def bakeSpriteDefaultSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
         return ConditionSwitch(
         "persistent.sprite_time=='day'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_top.png"),
             (posX,posY), getFile("image/sprites/"+character),
+            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
             (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/"+other1),
-            (posX,posY), getFile("image/sprites/"+other2)),
+            (posX,posY), getFile("image/sprites/belt.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
             im.matrix.tint(0.83, 0.88, 0.92)),
         "persistent.sprite_time=='sunset'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_top.png"),
             (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/"+emo), 
-            (posX,posY), getFile("image/sprites/"+other1),
-            (posX,posY), getFile("image/sprites/"+other2)),
-            im.matrix.tint(0.83, 0.88, 0.92)),
+            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/belt.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
+            im.matrix.tint(0.94, 0.82, 1.0)),
         "persistent.sprite_time=='night'",
         im.MatrixColor( 
             im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/"+clothes),
+            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_top.png"),
             (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/"+emo), 
-            (posX,posY), getFile("image/sprites/"+other1),
-            (posX,posY), getFile("image/sprites/"+other2)),
-            im.matrix.tint(0.83, 0.88, 0.92)))
+            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/belt.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
+            im.matrix.tint(0.63, 0.78, 0.82)))
+
+    def bakeSpriteDefaultPlusSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
+        return ConditionSwitch(
+        "persistent.sprite_time=='day'",
+        im.MatrixColor( 
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
+            (posX,posY), getFile("image/sprites/"+character),
+            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/belt_ps.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
+            im.matrix.tint(0.83, 0.88, 0.92)),
+        "persistent.sprite_time=='sunset'",
+        im.MatrixColor(  
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
+            (posX,posY), getFile("image/sprites/"+character),
+            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/belt_ps.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
+            im.matrix.tint(0.94, 0.82, 1.0)),
+        "persistent.sprite_time=='night'",
+        im.MatrixColor(  
+            im.Composite((sizeX,sizeY), 
+            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
+            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
+            (posX,posY), getFile("image/sprites/"+character),
+            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
+            (posX,posY), getFile("image/sprites/"+emo),
+            (posX,posY), getFile("image/sprites/belt_ps.png"),
+            (posX,posY), getFile("image/sprites/"+special)),
+            im.matrix.tint(0.63, 0.78, 0.82)))
 
 
 #styles
@@ -107,6 +149,8 @@ init:
     #
     $ sol_gen = Character(u"Солдат",color="288110",what_color="fff")
     $ gen = Character(u"Генадий",color="288110",what_color="fff")
+    $ sol_rs = Character(u"Солдат",color="da9979",what_color="fff")
+    $ rs = Character(u"Бритый",color="da9979",what_color="fff")
     #
     $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
     $ ggnvl = Character (u'Саша',color="ddde4e", kind=nvl)
@@ -131,18 +175,18 @@ init:
     $ hitting_iron = getFile("music/hitting_iron.mp3")
     $ train_inside_music = getFile("music/train_inside.mp3")
     
-    image gazeta1 = getFile("image/cg/gazeta1.jpg")
+    image gazeta1 = getFile("image/cg/gazeta1_draw.jpg")
     image futbol1_cg = getFile("image/cg/futbol1.jpg")
-    image grib_cg = getFile("image/cg/grib.jpg")
-    image forest_cg = getFile("image/cg/forest.jpg")
-    image stadion_cg = getFile("image/cg/stadion.jpg")
-    image mi8_in2 = getFile("image/cg/mi8_in2.jpg")
-    image mi8 = getFile("image/cg/mi8.jpg")
+    image grib_cg = getFile("image/cg/grib_draw.jpg")
+    image forest_cg = getFile("image/cg/forest_draw.jpg")
+    image stadion_cg = getFile("image/cg/stadion_draw.jpg")
+    image mi8_in2 = getFile("image/cg/mi8_in2_draw.jpg")
+    image mi8 = getFile("image/cg/mi8_draw.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
-    image gruz200 = getFile("image/cg/gruz200.jpg")
-    image eltsin1 = getFile("image/cg/eltsin1.jpg")
-    image airport = getFile("image/cg/airport.jpg")
-    image airport1 = getFile("image/cg/airport1.jpg")
+    image gruz200 = getFile("image/cg/gruz200_draw.jpg")
+    image eltsin1 = getFile("image/cg/eltsin1_draw.jpg")
+    image airport = getFile("image/cg/airport_draw.jpg")
+    image airport1 = getFile("image/cg/airport2_draw.jpg")
     image train = getFile("image/cg/train.png")
     image train_open = getFile("image/cg/train_open.png")
 
@@ -162,10 +206,14 @@ init:
         True, "angar"
     )
 
-    image gen ordin_smile = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_ord_smile.png", "belt_w_plus_a.png", "null.png")
-    image gen mournful = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_mournful_eye_fix.png", "belt_w_plus_a.png", "null.png")
-    image gen laught = bakeSprite(900,1080,0,0,"form_w_plus_a_pos0.png","gen/core_v2.png","gen/emo/gen_laught.png", "belt_w_plus_a.png", "null.png")
+    image gen normal smile = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_ord_smile.png")
+    image gen mournful = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_mournful.png")
+    image gen laught = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_laught.png")
 
+    image rs furious = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_furious.png")
+    image rs furious blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_furious.png", "romper_stomper/emo/rs_blik.png")
+    image rs normal = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png")
+    image rs normal blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png", "romper_stomper/emo/rs_blik.png")
 
     screen example_main_menu:
         tag menu

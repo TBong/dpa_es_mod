@@ -1,5 +1,6 @@
 label gudermes:
-    jump gudermes_prolog
+    call gudermes_prolog
+    call gudermes_day1
     jump th_demo_wip
     return
 
@@ -64,7 +65,6 @@ label gudermes_prolog:
     "Я попытался проснуться{w}, не получилось, сон не хотел отпускать меня. Но мириться я с этим не собирался, пытался снова и снова, снова и снова, но четно..."
     $ set_mode_adv()
     nvl clear
-    jump gudermes_day1
     return
 
 label gudermes_day1:
@@ -77,7 +77,7 @@ label gudermes_day1:
     "От того что бы начать переваривать всю эту странную ситуацию меня отвлек хлопок по плечу."
     sol_gen "Что хмурной такой?"
     "Я обернулся и увидел перед собой сбитого и коренастого молодого парня, с огромной лыбой на перевес, наверное года на два младьше."
-    show gen ordin_smile
+    show gen normal smile
     # Нужен спрайт для Гены
     gg "Невыспался малех."
     sol_gen "Верю, такая же бодяга. Как зовут то хоть?"
@@ -163,7 +163,7 @@ label gudermes_day1:
     hide goriScetch with dissolve
     scene train_inside_pic with dissolve
     "Я встал и наблюдал как доигрывается колода, Гена тип везучий, вся рука в козырях, от туза до десятки. По итогу вечно улыбающийся выиграл."
-    show gen ordin_smile
+    show gen normal smile
     gen "Оп и все."
     sol "Да как так то, уже третий раз. Фартовый ты тип."
     gg "На меня раздать не забудьте."
@@ -190,9 +190,10 @@ label gudermes_day1:
     show gen laught
     "И вдруг огонек опять зажёгся, лико превратилось в моську, Гена \"вернулся обратно\". Почему то я абсолютно уверен, что дело не в проигрыше."
     gg "Ну держи последнюю, шестерочку."
-    show gen ordin_smile
+    show gen normal smile
     gen "Хах, вот и все. Как раз карты надоели, а то пять тут кругов тут и ещё три с тобой до отправки - это гемор."
     "Я отправился смотреть на пейзаж."
+    hide gen normal smile
     hide train_inside_pic with dissolve
     show goriScetch with dissolve
     "Таким образом прошло три часа, оставалось ехать где то минут тридцать."
@@ -200,6 +201,23 @@ label gudermes_day1:
     "..."
     # Тут можно скрол рызных пейзажиков
     "Прибыли. Один паренек даже закимарил."
+    "Состав начал сбовлять ход, видимо мы практически на месте."
+    hide goriScetch with dissolve
+    scene train_inside_pic with dissolve
+    "Я прилег, прекрыв глаза..."
+    "Мой отдых прирвал возглыс."
+    sol "О вот и вокзал."
+    "Взяв все что у нас было мы вывалились из вагона, перед нами предстал какой то тип."
+    hide train_inside_pic with dissolve
+    scene train_open with dissolve
+    show rs furious
+    show rs furious blik
+    show rs furious
+    sol_rs "КАКОГО ХЕРА?!{w} Вы как сюда попали, блять?!{w} Каки блядским образом?!"
+    "Мы опешили, непонимая что делать"
+    sol_rs "Ало, вы в уши долбитесь? Ответ где."
+    "Гена решил срезать углы."
+    gen "Нас с Маздока отправили. Посадили в вагон и мы поехали."
+    sol_rs "Ебаные разгельдяи, нихера не могут сделать нормально."
     $ new_chapter(0, u"Гудермес день 1: \"Вокзал\"")
-    jump th_demo_wip
     return
