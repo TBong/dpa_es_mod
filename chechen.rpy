@@ -6,6 +6,10 @@ init -100 python:
         default_dpa_path = "mods/dpa_es_mod/"
     
     ch_memories = "default"
+    gen_fp = 0
+    humanity = 0
+    dysmoral = 0
+
 
 
 
@@ -270,17 +274,12 @@ init:
         easeout dt*0.25 yzoom 1.0 xzoom 1.0
 
 
-
-
 label dpa_menu:
     play music song_menu
     $ new_chapter(0, u"Меню DPA")
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     $ persistent.sprite_time = "day"
     call screen example_main_menu
-    return
-    
-label dpa_exit:
     return
 
 label dpa_combat_map:
