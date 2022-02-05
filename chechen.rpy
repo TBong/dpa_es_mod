@@ -26,9 +26,11 @@ init -99 python:
         rolled = renpy.random.randint(1, 100)
         return rolled == probability
 
-    def getRandomPick(image):
+    def getRandomItem(image):
         pick_weight = renpy.random.randint(0, len(image)-1)
         return image[pick_weight]
+
+
 
     brokenFont = getFile("old-fax.ttf")
     furore = getFile("Furore.ttf")
@@ -164,6 +166,7 @@ init:
     $ ggnvl = Character (u'Саша',color="ddde4e", kind=nvl)
 
     $ fon1 = getFile("music/fon1.mp3")
+    $ shturm = getFile("music/shturm.mp3")
     $ mi8 = getFile("music/mi8.mp3")
     $ hit = getFile("music/hit.mp3")
     $ mi8_1 = getFile("music/mi8_1.mp3")
@@ -182,8 +185,9 @@ init:
     $ pencil = getFile("music/pencil-scratches.mp3")
     $ hitting_iron = getFile("music/hitting_iron.mp3")
     $ train_inside_music = getFile("music/train_inside.mp3")
+    $ menu_music = getFile(getRandomItem(["music/song1.mp3","music/song2.mp3","music/song_menu.mp3"]))
     
-    image menu_back = getFile(getRandomPick(["gui/load/load_menu.jpg","menu/fon.png"]))
+    image menu_back = getFile(getRandomItem(["gui/load/load_menu.jpg","menu/fon.png"]))
     image gazeta1 = getFile("image/cg/gazeta1_draw.jpg")
     image futbol1_cg = getFile("image/cg/futbol1.jpg")
     image grib_cg = getFile("image/cg/grib_draw.jpg")
@@ -200,13 +204,16 @@ init:
     image train_open = getFile("image/cg/train_open.png")
 
     image train_inside_pic = getFile("image/bg/int_train.jpg")
-    image cabina = getFile("image/bg/cabina.jpg")
-    image angar = getFile("image/bg/angar.jpg")
+    image cabina = getFile("image/bg/cabina_draw.jpg")
+    image angar = getFile("image/bg/angar_draw.jpg")
     image goriScetch = getFile("image/bg/goriScetch.jpg")
-    image mi8_in1 = getFile("image/bg/mi8_in1.jpg")
-    image palatka = getFile("image/bg/palatka.jpg")
+    image mi8_in1 = getFile("image/bg/mi8_in1_draw.jpg")
+    image palatka = getFile("image/bg/palatka_draw.jpg")
 
-    
+    image random_alert = getFile("menu/random_alert.png")
+
+
+
     image childhood_memories = ConditionSwitch(
         "ch_memories=='grib'", "grib_cg",
         "ch_memories=='futbol1'", "futbol1_cg",
@@ -239,10 +246,10 @@ init:
             ypos 400
             action ShowMenu('dpa_Load')
         imagebutton:
-            auto getFile("menu/gallery_2_%s_wip.png")
+            auto getFile("menu/gallery_2_%s.png")
             xpos 55
             ypos 600
-            action NullAction()
+            action ShowMenu('wip')
         imagebutton:
             auto  getFile("menu/exit_2_%s.png")
             xpos 55
@@ -266,6 +273,19 @@ init:
             hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
             hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
 
+    screen disclaimer1:
+        text "{font=[furore]}Данная модификация вдохновлена событиями\nПервой Чеченской войны.":
+            xpos 101
+            ypos 330
+            size 60
+        text "{font=[furore]}Все совпадения с реальными персонажами\nи событиями являются случайными.":
+            xpos 101
+            ypos 490
+            size 60
+
+
+
+
     #эффекты
     transform fall:
         anchor (0.0, 0.0) pos (0.0, 0.0)
@@ -285,9 +305,28 @@ init:
         easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
         easeout dt*0.25 yzoom 1.0 xzoom 1.0
 
+    transform ra_disclaimer:
+        zoom 0.9 pos (545, 0)
+        pause (3)
+        linear 1.5 zoom 0.1 pos (-18, 7)
+    
+        
+
 
 label dpa_menu:
-    play music song_menu
+    scene black
+    call screen disclaimer1
+
+    show random_alert at ra_disclaimer with dissolve2
+    pause (10)
+
+
+
+
+
+
+
+    play music menu_music fadein 2
     $ new_chapter(0, u"Меню DPA")
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
     $ persistent.sprite_time = "day"

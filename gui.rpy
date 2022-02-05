@@ -117,6 +117,23 @@ screen dpa_Load:
                                 xpos 15
                                 ypos 15
 
+screen wip:
+    tag menu
+    modal True
+    window:
+        add "menu_back":
+            xpos -4
+            ypos -4
+
+        imagebutton:
+            idle getFile("menu/wip.png")
+            xpos 578
+            ypos 152
+            action NullAction()
+        timer 1.5 action Return()
+
+
+
 
 screen dpa_Save:
     tag menu
