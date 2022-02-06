@@ -101,4 +101,6 @@ label prolog:
     hide palatka with dissolve
     stop music fadeout 2
     stop music
-    jump dpa_combat_map
+    scene combat_map with dissolve
+    call dpa_combat_map
+    return

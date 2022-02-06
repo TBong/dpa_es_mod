@@ -5,8 +5,10 @@ label u_m:
     return
 
 label u_m_prolog:
+    "Урус-Мартан"
     $ new_chapter(0, u"Пролог: \"Урус-Мартан\"")
-    show combat_map
+    stop music fadeout 2
+    show palatka with dissolve
     return
 
 label u_m_day1:

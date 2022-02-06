@@ -13,6 +13,9 @@ init -100 python:
 
     #Прочее 
     ch_memories = "default"
+    qte_loose = False
+    qte_count = 0
+    companies_lod = "default"
 
 #Базовые функции
 init -99 python:
@@ -28,9 +31,12 @@ init -99 python:
         rolled = renpy.random.randint(1, 100)
         return rolled <= probability
 
-    def getRandomItem(image):
-        pick_weight = renpy.random.randint(0, len(image)-1)
-        return image[pick_weight]
+    def getRandomItem(items):
+        num = renpy.random.randint(0, len(items)-1)
+        return items[num]
+
+    def getRandomButton():
+        return getRandomItem(['1','2','3','4','5','6','7','8','9','0','z','x','c','j','i','o','b','t','h'])
     
     def bakeSpriteDefaultSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
         return ConditionSwitch(
@@ -142,54 +148,67 @@ init:
         define config.developer = True
 
     $ mods["dpa_start"]=u"{font=[furore]}Добро пожаловать в {color=#911010}ад"
-    #
+
+    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
+
+    #Главный герой
+    $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
+    $ ggnvl = Character (u'Саша',color="ddde4e", kind=nvl)
+
+    #Перостепенные герои
+    $ sol_gen = Character(u"Солдат",color="288110",what_color="fff")
+    $ gen = Character(u"Генадий",color="288110",what_color="fff")
+    $ sol_rs = Character(u"Солдат",color="da9979",what_color="fff")
+    $ rs = Character(u"Бритый",color="da9979",what_color="fff")
+
+    #Редкий юз
     $ elt = Character (u'Борис Николаевич', color="949494", what_color="fff")
     $ kp = Character (u'Командир полка', color="4f4031", what_color="fff")
     $ ofic = Character (u'Офицер', color="e3b212", what_color="fff")
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
-    #
-    $ sol_gen = Character(u"Солдат",color="288110",what_color="fff")
-    $ gen = Character(u"Генадий",color="288110",what_color="fff")
-    $ sol_rs = Character(u"Солдат",color="da9979",what_color="fff")
-    $ rs = Character(u"Бритый",color="da9979",what_color="fff")
-    #
-    $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
-    $ ggnvl = Character (u'Саша',color="ddde4e", kind=nvl)
 
-    $ fon1 = getFile("music/fon1.mp3")
-    $ shturm = getFile("music/shturm.mp3")
-    $ mi8 = getFile("music/mi8.mp3")
-    $ hit = getFile("music/hit.mp3")
-    $ mi8_1 = getFile("music/mi8_1.mp3")
-    $ uaz = getFile("music/uaz.mp3")
-    $ song1 = getFile("music/song1.mp3")
-    $ song_ep = getFile("music/song_ep.mp3")
-    $ song_menu = getFile("music/song_menu.mp3")
-    $ song2 = getFile("music/song2.mp3")
-    $ song_liric = getFile("music/song_liric.mp3")
-    $ song_liric2 = getFile("music/song_liric2.mp3")
-    $ song_gruz200 = getFile("music/song_gruz200.mp3")
-    $ song_na_mozdok = getFile("music/song_na_mozdok.mp3")
-    $ an12 = getFile("music/an12.mp3")
-    $ veter = getFile("music/veter.mp3")
-    $ song_rising_sun = getFile("music/song_rising_sun.mp3")
-    $ pencil = getFile("music/pencil-scratches.mp3")
-    $ hitting_iron = getFile("music/hitting_iron.mp3")
-    $ train_inside_music = getFile("music/train_inside.mp3")
-    $ menu_music = getFile(getRandomItem(["music/song1.mp3","music/song2.mp3","music/song_menu.mp3"]))
-    
-    image menu_back = getFile(getRandomItem(["gui/load/load_menu.jpg","menu/fon.png"]))
+    #Музыка
+    $ fon1 = getFile("sound/song/fon1.mp3")
+    $ shturm = getFile("sound/song/shturm.mp3")
+    $ song1 = getFile("sound/song/song1.mp3")
+    $ song_ep = getFile("sound/song/song_ep.mp3")
+    $ song_menu = getFile("sound/song/song_menu.mp3")
+    $ song2 = getFile("sound/song/song2.mp3")
+    $ song_liric = getFile("sound/song/song_liric.mp3")
+    $ song_liric2 = getFile("sound/song/song_liric2.mp3")
+    $ song_gruz200 = getFile("sound/song/song_gruz200.mp3")
+    $ song_na_mozdok = getFile("sound/song/song_na_mozdok.mp3")
+    $ song_rising_sun = getFile("sound/song/song_rising_sun.mp3")
+
+    $ menu_music = getFile("sound/song/"+getRandomItem(["song1","song2","song_menu"])+".mp3")
+
+    #Звуки окружения
+    $ mi8 = getFile("sound/ambinet/mi8.mp3")
+    $ mi8_1 = getFile("sound/ambinet/mi8_1.mp3")
+    $ uaz = getFile("sound/ambinet/uaz.mp3")
+    $ an12 = getFile("sound/ambinet/an12.mp3")
+    $ train_inside_music = getFile("sound/ambinet/train_inside.mp3")
+    $ veter = getFile("sound/ambinet/veter.mp3")
+
+    #Звуковые эфекты
+    $ hit = getFile("sound/sfx/hit.mp3")
+    $ pencil = getFile("sound/sfx/pencil-scratches.mp3")
+    $ hitting_iron = getFile("sound/sfx/hitting_iron.mp3")
+    $ ra_sound = getFile("sound/sfx/ra_sound.mp3")
+
+    #Пикчи позже будет норм сорт 
     image gazeta1 = getFile("image/cg/gazeta1_draw.jpg")
     image futbol1_cg = getFile("image/cg/futbol1.jpg")
     image grib_cg = getFile("image/cg/grib_draw.jpg")
     image forest_cg = getFile("image/cg/forest_draw.jpg")
     image stadion_cg = getFile("image/cg/stadion_draw.jpg")
+    image eltsin1 = getFile("image/cg/eltsin1_draw.jpg")
+    image gruz200 = getFile("image/cg/gruz200_draw.jpg")
+
     image mi8_in2 = getFile("image/cg/mi8_in2_draw.jpg")
     image mi8 = getFile("image/cg/mi8_draw.jpg")
     image combat_map = getFile("menu/combat_map/test_map.png")
-    image gruz200 = getFile("image/cg/gruz200_draw.jpg")
-    image eltsin1 = getFile("image/cg/eltsin1_draw.jpg")
     image airport = getFile("image/cg/airport_draw.jpg")
     image airport1 = getFile("image/cg/airport2_draw.jpg")
     image train = getFile("image/cg/train.png")
@@ -202,7 +221,30 @@ init:
     image mi8_in1 = getFile("image/bg/mi8_in1_draw.jpg")
     image palatka = getFile("image/bg/palatka_draw.jpg")
 
-    image random_alert = getFile("menu/random_alert.png")
+    #Меню и иные приколы
+    image menu_back = getFile(getRandomItem(["gui/load/load_menu.jpg","menu/fon.png"]))
+
+    image random_alert:
+        getFile("menu/ra_anim/random_alert0.png")
+        0.3
+        getFile("menu/ra_anim/random_alert1.png")
+        0.3
+        getFile("menu/ra_anim/random_alert2.png")
+        0.3
+        getFile("menu/ra_anim/random_alert3.png")
+        0.3
+        getFile("menu/ra_anim/random_alert4.png")
+        0.3
+        repeat
+
+    image qte_anim_button:
+        getFile("menu/qte/press_button1.png")
+        0.1
+        getFile("menu/qte/press_button2.png")
+        0.1
+        getFile("menu/qte/press_button3.png")
+        0.1
+        repeat
 
     image childhood_memories = ConditionSwitch(
         "ch_memories=='grib'", "grib_cg",
@@ -212,6 +254,7 @@ init:
         True, "angar"
     )
 
+    #Спрайт. Билдер выше
     image gen normal smile = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_ord_smile.png")
     image gen mournful = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_mournful.png")
     image gen laught = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_laught.png")
@@ -221,6 +264,7 @@ init:
     image rs normal = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png")
     image rs normal blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png", "romper_stomper/emo/rs_blik.png")
 
+    #Скрины
     screen example_main_menu:
         tag menu
         modal True
@@ -256,13 +300,13 @@ init:
     
     screen combat_map:
         imagemap:
-            ground getFile("menu/combat_map/test_map.png")
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Jump(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
-            hotspot (772,474,40,47) action Jump(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
-            hotspot (901,397,50,45) action Jump(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
-            hotspot (986,377,50,42) action Jump("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
+            hotspot (657,482,35,35) action Call(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
+            hotspot (772,474,40,47) action Call(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
+            hotspot (901,397,50,45) action Call(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
+            hotspot (986,377,50,42) action Call("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
 
+    #Дисклеймер
     screen disclaimer1:
         key "dismiss" action [ Hide("disclaimer1", transition=dissolve), Pause(1), Return() ]
         text "{font=[furore]}Данная модификация вдохновлена событиями\nПервой Чеченской войны.":
@@ -277,31 +321,55 @@ init:
     screen disclaimer2:
         key "dismiss" action [ Hide("disclaimer2", transition=dissolve), Pause(1), Return() ]
         text "{font=[furore]}В моде имеються случайные события.":
-            xpos 210
-            ypos 410
+            xalign 0.5
+            ypos 420
             size 60
         text "{font=[furore]}Перед тем как они *возможно* произойдут вас оповестит рация.":
-            xpos 101
-            ypos 540
+            xalign 0.5
+            ypos 520
             size 60
     
     screen disclaimer3:
-        key "dismiss" action [ Hide("disclaimer3", transition=dissolve), Pause(0.5), Return() ]
-        timer 5.0 action [ Hide("disclaimer3", transition=dissolve), Pause(0.5), Return() ]
+        key "dismiss" action [ Hide("disclaimer3", transition=dissolve), Pause(1), Return() ]
+        text "{font=[furore]}В моде имееться QTE.":
+            xalign 0.5
+            ypos 360
+            size 60
+        text "{font=[furore]}Что бы все работало правильно, включите англискую раскладку и выключите Caps Lock.":
+            xalign 0.5
+            ypos 460
+            size 60
+        text "{font=[furore]}Сейчас будет пример QTE.":
+            xalign 0.5
+            ypos 640
+            size 60
+    
+    screen disclaimer4:
+        key "dismiss" action [ Hide("disclaimer4", transition=dissolve), Pause(0.5), Return() ]
+        timer 5.0 action [ Hide("disclaimer4", transition=dissolve), Pause(0.5), Return() ]
         text "{font=[furore]}Приятного прочтения.":
-            xpos 410
+            xalign 0.5
             ypos 500
             size 80
 
+    #Титры
     screen th_for_read:
-        key "dismiss" action [ Hide("disclaimer3", transition=dissolve), Pause(0.5), Return() ]
-        timer 5.0 action [ Hide("disclaimer3", transition=dissolve), Pause(0.5), Return() ]
+        key "dismiss" action [ Hide("th_for_read", transition=dissolve), Pause(0.5), Return() ]
+        timer 5.0 action [ Hide("th_for_read", transition=dissolve), Pause(0.5), Return() ]
         text "{font=[furore]}Благодарим за прочтение мода.":
-            xpos 160
+            xalign 0.5
             ypos 500
             size 80
 
-    #эффекты
+    #qte
+    screen qte_start(pressed_key, time):
+        add "qte_anim_button" xalign 0.5 yalign 0.5
+        key pressed_key action [ Hide("qte_start"), Return() ] 
+        text "{font=[furore]}[pressed_key]" xalign 0.5 yalign 0.5 size 380 color "#c51d1d"
+        text "{font=[furore]}Жми [pressed_key] что бы вернуться!" align(0.5, 0.85) size 60
+        timer time action [ Hide("qte_start"), SetVariable("qte_loose", True), Return() ]
+
+    #эффекты (Трансформы)
     transform fall:
         anchor (0.0, 0.0) pos (0.0, 0.0)
         linear 0.1 pos (-50, 50)
@@ -323,21 +391,20 @@ init:
     transform ra_disclaimer:
         zoom 0.9 pos (545, 0)
         pause (2)
-        linear 1.5 zoom 0.1 pos (-18, 7)
+        linear 1.5 zoom 0.1 pos (0, 7)
     
     transform random_alert_transform:
-        zoom 0.1 pos (-18, 7)
+        zoom 0.1 pos (0, 7)
 
 label dpa_start:
     call disclaimer
+    $ renpy.block_rollback()
     play music menu_music fadein 2
-    $ new_chapter(0, u"Меню DPA")
-    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
-    $ persistent.sprite_time = "day"
     call dpa_menu
     return
 
 label dpa_menu:
+    $ new_chapter(0, u"Меню DPA")
     scene menu_back with dissolve2
     call screen example_main_menu with dissolve
     return
@@ -352,13 +419,19 @@ label disclaimer:
     pause (0.1)
     call screen disclaimer2 with dissolve
     pause(1)
-    hide random_alert
+    hide random_alert 
     call screen disclaimer3 with dissolve
+    pause(1)
+    call qte_label(1,5)
+    $ qte_loose = False
+    pause(1)
+    call screen disclaimer4 with dissolve
     pause(1)
     return
         
 label random_alert_call:
     show random_alert at random_alert_transform
+    play sound ra_sound
     return
 
 label dpa_combat_map:
@@ -372,3 +445,14 @@ label th_demo_wip:
     call screen th_for_read with dissolve
     jump dpa_menu
     return
+
+
+label qte_label(count=1, time=2):
+    $ qte_count = count
+    while qte_count > 0:
+        if qte_loose:
+            pass
+        else:
+            call screen qte_start(getRandomButton(),time)
+        $ qte_count -= 1
+

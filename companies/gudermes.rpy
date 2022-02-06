@@ -5,11 +5,9 @@ label gudermes:
     return
 
 label gudermes_prolog:
+    "Гудермес."
     $ new_chapter(0, u"Пролог: \"Гудермес\"")
     stop music fadeout 2
-    show combat_map 
-    "Гудермес."
-    hide combat_map with dissolve
     show palatka with dissolve
     kp "Считай тебе крупно \"повезло\", тебя там не должно быть, но обстоятельсва сложились так."
     gg "А что нужно делать?"

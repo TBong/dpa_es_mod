@@ -11,6 +11,8 @@ init -80:
 
             $ timeofday = persistent.timeofday
 
+            imagebutton auto getFile("gui/gray/lil_menu_call_%s.png") xpos 1870 ypos 200 action ShowMenu("dpa_menu_selector")
+
             if persistent.font_size == "large":
 
                 imagebutton auto getFile("gui/gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
@@ -33,7 +35,7 @@ init -80:
 
             elif persistent.font_size == "small":
 
-                imagebutton auto getFile("gui/gray//backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
+                imagebutton auto getFile("gui/gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
 
                 add getFile("gui/gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
 
@@ -56,8 +58,8 @@ screen dpa_Load:
     modal True
     window:
         add "menu_back":
-            xpos -4
-            ypos -4
+            xpos -6
+            ypos -6
 
         textbutton ["Загрузить игру"]:
             ypos 950
@@ -111,9 +113,7 @@ screen dpa_Load:
                         yfill False
                         style "file_load_button"
                         fixed:
-                            text ( "%s." % i
-                                   + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])
-                                   + "\n" +FileSaveName(i)):
+                            text ( "%s." % i + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language]) + "\n" +FileSaveName(i)):
                                 xpos 15
                                 ypos 15
 
@@ -122,8 +122,8 @@ screen wip:
     modal True
     window:
         add "menu_back":
-            xpos -4
-            ypos -4
+            xpos -6
+            ypos -6
 
         imagebutton:
             idle getFile("menu/wip.png")
@@ -132,16 +132,74 @@ screen wip:
             action NullAction()
         timer 1.5 action Return()
 
+screen dpa_menu_selector:
+    tag menu
+    modal True
 
+    $ timeofday = persistent.timeofday
+    $ time_of_day = persistent.timeofday
+    button:
+        style "blank_button"
+        xalign 0
+        yalign 0
+        xfill True
+        yfill True
+        action Return()
+    
+    add getFile("gui/menu/lil_menu_back.png"):
+        xalign 0.5
+        yalign 0.5
 
+    textbutton ["Меню мода"]:
+        xalign 0.5
+        yalign 0.24
+        text_style "text_save_load"
+        style "button_none"
+        action Jump("dpa_menu")
+
+    textbutton ["Меню БЛ"]:
+        xalign 0.5
+        yalign 0.34
+        text_style "text_save_load"
+        style "button_none"
+        action MainMenu()
+
+    textbutton ["Сохранение"]:
+        xalign 0.5
+        yalign 0.44
+        text_style "text_save_load"
+        style "button_none"
+        action ShowMenu('dpa_Save')
+    
+    textbutton ["Загрузка"]:
+        xalign 0.5
+        yalign 0.54
+        text_style "text_save_load"
+        style "button_none"
+        action ShowMenu('dpa_Load')
+    
+    textbutton ["Настройки"]:
+        xalign 0.5
+        yalign 0.64
+        text_style "text_save_load"
+        style "button_none"
+        action ShowMenu('preferences')
+    
+    textbutton ["Выход"]:
+        xalign 0.5
+        yalign 0.74
+        text_style "text_save_load"
+        style "button_none"
+        action ShowMenu('quit')
+    
 
 screen dpa_Save:
     tag menu
     modal True
     window:
         add "menu_back":
-            xpos -4
-            ypos -4
+            xpos -6
+            ypos -6
 
         textbutton ["Сохранить игру"]:
             ypos 950
@@ -195,8 +253,6 @@ screen dpa_Save:
                         yfill False
                         style "file_load_button"
                         fixed:
-                            text ( "%s." % i
-                                   + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])
-                                   + "\n" +FileSaveName(i)):
+                            text ( "%s." % i + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language]) + "\n" +FileSaveName(i)):
                                 xpos 15
                                 ypos 15

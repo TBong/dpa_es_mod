@@ -5,11 +5,9 @@ label argun:
     return
 
 label argun_prolog:
-    $ new_chapter(0, u"Пролог: \"Аргун\"")
-    show combat_map with dissolve
     "Аргун."
+    $ new_chapter(0, u"Пролог: \"Аргун\"")
     kp "Готовься, твой “борт” вылетает завтра."
-    hide combat_map with dissolve
     show gruz200 with dissolve
     play music song_na_mozdok volume 0.5 fadein 2
     "Послушав командира я отправился «домой» в ангар."
