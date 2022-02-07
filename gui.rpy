@@ -152,42 +152,42 @@ screen dpa_menu_selector:
 
     textbutton ["Меню мода"]:
         xalign 0.5
-        yalign 0.24
+        yalign 0.25
         text_style "text_save_load"
         style "button_none"
         action Jump("dpa_menu")
 
     textbutton ["Меню БЛ"]:
         xalign 0.5
-        yalign 0.34
+        yalign 0.35
         text_style "text_save_load"
         style "button_none"
         action MainMenu()
 
     textbutton ["Сохранение"]:
         xalign 0.5
-        yalign 0.44
+        yalign 0.45
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('dpa_Save')
     
     textbutton ["Загрузка"]:
         xalign 0.5
-        yalign 0.54
+        yalign 0.55
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('dpa_Load')
     
     textbutton ["Настройки"]:
         xalign 0.5
-        yalign 0.64
+        yalign 0.65
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('preferences')
     
     textbutton ["Выход"]:
         xalign 0.5
-        yalign 0.74
+        yalign 0.75
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('quit')

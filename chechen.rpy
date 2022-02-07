@@ -1,3 +1,5 @@
+
+
 #Базовые переменные
 init -100 python:
     to_steam = False
@@ -5,6 +7,22 @@ init -100 python:
         default_dpa_path = ""
     else:
         default_dpa_path = "mods/dpa_es_mod/"
+
+    
+    #Поинты
+    gen_fp = 0
+    humanity = 0
+    dysmoral = 0
+
+    #Прочее 
+    ch_memories = "default"
+    qte_loose = False
+    qte_count = 0
+    companies_lod = "th_demo_wip"
+
+
+
+
 
 #Базовые функции
 init -99 python:
@@ -167,8 +185,9 @@ init:
     $ song_gruz200 = getFile("sound/song/song_gruz200.mp3")
     $ song_na_mozdok = getFile("sound/song/song_na_mozdok.mp3")
     $ song_rising_sun = getFile("sound/song/song_rising_sun.mp3")
+    $ kombat = getFile("sound/song/kombat.mp3")
 
-    $ menu_music = getFile("sound/song/"+getRandomItem(["song1","song2","song_menu"])+".mp3")
+    $ menu_music = getFile("sound/song/"+getRandomItem(["song1","song2","song_menu","kombat","shturm"])+".mp3")
 
     #Звуки окружения
     $ mi8 = getFile("sound/ambinet/mi8.mp3")
@@ -411,7 +430,6 @@ label disclaimer:
     call screen disclaimer3 with dissolve
     pause(1)
     call qte_label(1,5)
-    $ qte_loose = False
     pause(1)
     call screen disclaimer4 with dissolve
     pause(1)
