@@ -103,4 +103,5 @@ label prolog:
     stop music
     scene combat_map with dissolve
     call dpa_combat_map
+    $ renpy.call_in_new_context(companies_lod)
     return

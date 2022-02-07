@@ -6,17 +6,6 @@ init -100 python:
     else:
         default_dpa_path = "mods/dpa_es_mod/"
 
-    #Поинты
-    gen_fp = 0
-    humanity = 0
-    dysmoral = 0
-
-    #Прочее 
-    ch_memories = "default"
-    qte_loose = False
-    qte_count = 0
-    companies_lod = "default"
-
 #Базовые функции
 init -99 python:
     def getFile(file):
@@ -148,8 +137,6 @@ init:
         define config.developer = True
 
     $ mods["dpa_start"]=u"{font=[furore]}Добро пожаловать в {color=#911010}ад"
-
-    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
 
     #Главный герой
     $ gg = Character (u'Саша',color="ddde4e",what_color="fff")
@@ -301,10 +288,10 @@ init:
     screen combat_map:
         imagemap:
             auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action Call(getLabelWIP("bamut")) alt Jump("prolog") hover_sound pencil #Бамут
-            hotspot (772,474,40,47) action Call(getLabelWIP("u_m")) alt Jump("prolog") hover_sound pencil #Урус-Мартан
-            hotspot (901,397,50,45) action Call(getLabelWIP("argun")) alt Jump("prolog") hover_sound pencil #Аргун
-            hotspot (986,377,50,42) action Call("gudermes") alt Jump("prolog") hover_sound pencil #Гудермес
+            hotspot (657,482,35,35) action [ SetVariable("companies_lod", "bamut"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Бамут
+            hotspot (772,474,40,47) action [ SetVariable("companies_lod", "u_m"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Урус-Мартан
+            hotspot (901,397,50,45) action [ SetVariable("companies_lod", "argun"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Аргун
+            hotspot (986,377,50,42) action [ SetVariable("companies_lod", "gudermes"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Гудермес
 
     #Дисклеймер
     screen disclaimer1:
@@ -398,12 +385,13 @@ init:
 
 label dpa_start:
     call disclaimer
-    $ renpy.block_rollback()
-    play music menu_music fadein 2
     call dpa_menu
     return
 
 label dpa_menu:
+    $ renpy.block_rollback()
+    play music menu_music fadein 2
+    call initVars
     $ new_chapter(0, u"Меню DPA")
     scene menu_back with dissolve2
     call screen example_main_menu with dissolve
@@ -436,7 +424,7 @@ label random_alert_call:
 
 label dpa_combat_map:
     show combat_map with dissolve
-    call screen combat_map 
+    call screen combat_map
     return
 
 label th_demo_wip:
@@ -445,7 +433,6 @@ label th_demo_wip:
     call screen th_for_read with dissolve
     jump dpa_menu
     return
-
 
 label qte_label(count=1, time=2):
     $ qte_count = count
@@ -456,3 +443,18 @@ label qte_label(count=1, time=2):
             call screen qte_start(getRandomButton(),time)
         $ qte_count -= 1
 
+
+label initVars:
+    #Меню
+    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
+    
+    #Поинты
+    $ gen_fp = 0
+    $ humanity = 0
+    $ dysmoral = 0
+
+    #Прочее 
+    $ ch_memories = "default"
+    $ qte_loose = False
+    $ qte_count = 0
+    $ companies_lod = "th_demo_wip"
