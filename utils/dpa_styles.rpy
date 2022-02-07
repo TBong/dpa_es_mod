@@ -27,5 +27,5 @@ init -98 python:
 #Переменные от функция
 init -97 python:
     #Шрифты
-    brokenFont = getFile("old-fax.ttf")
-    furore = getFile("Furore.ttf")
+    brokenFont = getFile("fonts/old-fax.ttf")
+    furore = getFile("fonts/Furore.ttf")

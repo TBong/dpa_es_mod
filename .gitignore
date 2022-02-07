@@ -1,2 +1,6 @@
 *.rpyc
+*.bak
+**.rpyc
+**.bak
 companies/*.rpyc
+companies/*.bak
