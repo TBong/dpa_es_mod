@@ -1,5 +1,3 @@
-
-
 #Базовые переменные
 init -100 python:
     to_steam = False
@@ -7,7 +5,6 @@ init -100 python:
         default_dpa_path = ""
     else:
         default_dpa_path = "mods/dpa_es_mod/"
-
     
     #Поинты
     gen_fp = 0
@@ -19,136 +16,6 @@ init -100 python:
     qte_loose = False
     qte_count = 0
     companies_lod = "th_demo_wip"
-
-
-
-
-
-#Базовые функции
-init -99 python:
-    def getFile(file):
-        return default_dpa_path + file
-
-    def getLabelWIP(name):
-        if to_steam == True:
-            return "th_demo_wip"
-        return name
-    
-    def canEventPlay(probability):
-        rolled = renpy.random.randint(1, 100)
-        return rolled <= probability
-
-    def getRandomItem(items):
-        num = renpy.random.randint(0, len(items)-1)
-        return items[num]
-
-    def getRandomButton():
-        return getRandomItem(['1','2','3','4','5','6','7','8','9','0','z','x','c','j','i','o','b','t','h'])
-    
-    def bakeSpriteDefaultSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
-        return ConditionSwitch(
-        "persistent.sprite_time=='day'",
-        im.MatrixColor( 
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.83, 0.88, 0.92)),
-        "persistent.sprite_time=='sunset'",
-        im.MatrixColor( 
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.94, 0.82, 1.0)),
-        "persistent.sprite_time=='night'",
-        im.MatrixColor( 
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.63, 0.78, 0.82)))
-
-    def bakeSpriteDefaultPlusSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
-        return ConditionSwitch(
-        "persistent.sprite_time=='day'",
-        im.MatrixColor( 
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt_ps.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.83, 0.88, 0.92)),
-        "persistent.sprite_time=='sunset'",
-        im.MatrixColor(  
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt_ps.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.94, 0.82, 1.0)),
-        "persistent.sprite_time=='night'",
-        im.MatrixColor(  
-            im.Composite((sizeX,sizeY), 
-            (posX,posY), getFile("image/sprites/form_v2_ps_bottom.png"),
-            (posX,posY), getFile("image/sprites/form_v2_ps_top.png"),
-            (posX,posY), getFile("image/sprites/"+character),
-            (posX,posY), getFile("image/sprites/form_v2_ps_middle.png"),
-            (posX,posY), getFile("image/sprites/"+emo),
-            (posX,posY), getFile("image/sprites/belt_ps.png"),
-            (posX,posY), getFile("image/sprites/"+special)),
-            im.matrix.tint(0.63, 0.78, 0.82)))
-
-
-#Стили
-init -98 python:
-    style.text_save_load                          = Style(style.default)
-    style.text_save_load.font                     = getFile("Furore.ttf")
-    style.text_save_load.size                     = 60
-    style.text_save_load.color                    = "#ffffff"
-    style.text_save_load.hover_color              = "#808080"
-    style.text_save_load.selected_color           = "#ffffff"
-    style.text_save_load.selected_idle_color      = "#ffffff"
-    style.text_save_load.selected_hover_color     = "#808080"
-    style.text_save_load.insensitive_color        = "#ffffff"
-
-    style.button_none = Style(style.button)
-    style.button_none.background = None
-    style.button_none.hover_background = None
-    style.button_none.selected_background = None
-    style.button_none.selected_hover_background = None
-    style.button_none.selected_idle_background = None
-
-    style.file_load_button = Style(style.button)
-    style.file_load_button.background = getFile("gui/load/load_Button_idle.png")
-    style.file_load_button.hover_background = getFile("gui/load/load_Button_hover.png")
-    style.file_load_button.selected_background = getFile("gui/load/load_Button_selected.png")
-    style.file_load_button.selected_hover_background = getFile("gui/load/load_Button_selected.png")
-    style.file_load_button.selected_idle_background = getFile("gui/load/load_Button_selected.png")
-
-#Переменные от функция
-init -97 python:
-    #Шрифты
-    brokenFont = getFile("old-fax.ttf")
-    furore = getFile("Furore.ttf")
 
 init:
     if to_steam == False:
@@ -214,7 +81,7 @@ init:
 
     image mi8_in2 = getFile("image/cg/mi8_in2_draw.jpg")
     image mi8 = getFile("image/cg/mi8_draw.jpg")
-    image combat_map = getFile("menu/combat_map/test_map.png")
+    image combat_map = getFile("image/screens/menu/image_maps/combat_map/test_map.png")
     image airport = getFile("image/cg/airport_draw.jpg")
     image airport1 = getFile("image/cg/airport2_draw.jpg")
     image train = getFile("image/cg/train.png")
@@ -228,27 +95,27 @@ init:
     image palatka = getFile("image/bg/palatka_draw.jpg")
 
     #Меню и иные приколы
-    image menu_back = getFile(getRandomItem(["gui/load/load_menu.jpg","menu/fon.png"]))
+    image menu_back = getFile(getRandomItem(["image/cg/menu_fon1.jpg","image/cg/menu_fon2.png"]))
 
     image random_alert:
-        getFile("menu/ra_anim/random_alert0.png")
+        getFile("image/screens/ra_anim/random_alert0.png")
         0.3
-        getFile("menu/ra_anim/random_alert1.png")
+        getFile("image/screens/ra_anim/random_alert1.png")
         0.3
-        getFile("menu/ra_anim/random_alert2.png")
+        getFile("image/screens/ra_anim/random_alert2.png")
         0.3
-        getFile("menu/ra_anim/random_alert3.png")
+        getFile("image/screens/ra_anim/random_alert3.png")
         0.3
-        getFile("menu/ra_anim/random_alert4.png")
+        getFile("image/screens/ra_anim/random_alert4.png")
         0.3
         repeat
 
     image qte_anim_button:
-        getFile("menu/qte/press_button1.png")
+        getFile("image/screens/qte/press_button1.png")
         0.1
-        getFile("menu/qte/press_button2.png")
+        getFile("image/screens/qte/press_button2.png")
         0.1
-        getFile("menu/qte/press_button3.png")
+        getFile("image/screens/qte/press_button3.png")
         0.1
         repeat
 
@@ -270,198 +137,6 @@ init:
     image rs normal = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png")
     image rs normal blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png", "romper_stomper/emo/rs_blik.png")
 
-    #Скрины
-    screen example_main_menu:
-        tag menu
-        modal True
-        add getFile("menu/fon_text.png")
-        imagebutton:
-            auto  getFile("menu/nachat_2_%s.png")
-            xpos 55
-            ypos 200
-            action (Hide("example_main_menu", transition=dissolve)), (Call("prolog"))
-        imagebutton:
-            auto getFile("menu/load_2_%s.png")
-            xpos 55
-            ypos 400
-            action ShowMenu('dpa_Load')
-        imagebutton:
-            auto getFile("menu/gallery_2_%s.png")
-            xpos 55
-            ypos 600
-            action ShowMenu('wip')
-        imagebutton:
-            auto  getFile("menu/exit_2_%s.png")
-            xpos 55
-            ypos 800
-            action Return()
-        text "{font=[furore]}Добро пожаловать в":
-            xpos 1000
-            ypos 33
-            size 58
-        text "{font=[furore]}{color=#911010}АД":
-            xpos 1350
-            ypos 80
-            size 70
-    
-    screen combat_map:
-        imagemap:
-            auto getFile("menu/combat_map/test_map_%s.png")
-            hotspot (657,482,35,35) action [ SetVariable("companies_lod", "bamut"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Бамут
-            hotspot (772,474,40,47) action [ SetVariable("companies_lod", "u_m"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Урус-Мартан
-            hotspot (901,397,50,45) action [ SetVariable("companies_lod", "argun"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Аргун
-            hotspot (986,377,50,42) action [ SetVariable("companies_lod", "gudermes"), Hide("combat_map", transition=dissolve), Return()] alt Jump("prolog") hover_sound pencil #Гудермес
-
-    #Дисклеймер
-    screen disclaimer1:
-        key "dismiss" action [ Hide("disclaimer1", transition=dissolve), Pause(1), Return() ]
-        text "{font=[furore]}Данная модификация вдохновлена событиями\nПервой Чеченской войны.":
-            xpos 101
-            ypos 400
-            size 60
-        text "{font=[furore]}Все совпадения с реальными персонажами\nи событиями являются случайными.":
-            xpos 101
-            ypos 560
-            size 60
-    
-    screen disclaimer2:
-        key "dismiss" action [ Hide("disclaimer2", transition=dissolve), Pause(1), Return() ]
-        text "{font=[furore]}В моде имеються случайные события.":
-            xalign 0.5
-            ypos 420
-            size 60
-        text "{font=[furore]}Перед тем как они *возможно* произойдут вас оповестит рация.":
-            xalign 0.5
-            ypos 520
-            size 60
-    
-    screen disclaimer3:
-        key "dismiss" action [ Hide("disclaimer3", transition=dissolve), Pause(1), Return() ]
-        text "{font=[furore]}В моде имееться QTE.":
-            xalign 0.5
-            ypos 360
-            size 60
-        text "{font=[furore]}Что бы все работало правильно, включите англискую раскладку и выключите Caps Lock.":
-            xalign 0.5
-            ypos 460
-            size 60
-        text "{font=[furore]}Сейчас будет пример QTE.":
-            xalign 0.5
-            ypos 640
-            size 60
-    
-    screen disclaimer4:
-        key "dismiss" action [ Hide("disclaimer4", transition=dissolve), Pause(0.5), Return() ]
-        timer 5.0 action [ Hide("disclaimer4", transition=dissolve), Pause(0.5), Return() ]
-        text "{font=[furore]}Приятного прочтения.":
-            xalign 0.5
-            ypos 500
-            size 80
-
-    #Титры
-    screen th_for_read:
-        key "dismiss" action [ Hide("th_for_read", transition=dissolve), Pause(0.5), Return() ]
-        timer 5.0 action [ Hide("th_for_read", transition=dissolve), Pause(0.5), Return() ]
-        text "{font=[furore]}Благодарим за прочтение мода.":
-            xalign 0.5
-            ypos 500
-            size 80
-
-    #qte
-    screen qte_start(pressed_key, time):
-        add "qte_anim_button" xalign 0.5 yalign 0.5
-        key pressed_key action [ Hide("qte_start"), Return() ] 
-        text "{font=[furore]}[pressed_key]" xalign 0.5 yalign 0.5 size 380 color "#c51d1d"
-        text "{font=[furore]}Жми [pressed_key] что бы вернуться!" align(0.5, 0.85) size 60
-        timer time action [ Hide("qte_start"), SetVariable("qte_loose", True), Return() ]
-
-    #эффекты (Трансформы)
-    transform fall:
-        anchor (0.0, 0.0) pos (0.0, 0.0)
-        linear 0.1 pos (-50, 50)
-        linear 0.1 pos (50, -50)
-        linear 0.1 pos (50, 50)
-        linear 0.1 pos (-50, -50)
-        repeat
-
-    transform zoom_to(time=1, an_x=0.5, an_y=0.5, zoom_value=2):
-        linear time zoom zoom_value anchor(an_x,an_y)
-
-    transform leap(dyz=0.01, dxz=0.005, dt=.4):
-        yzoom 1.0
-        easein dt*0.25 yzoom 1.0+dyz xzoom 1.0-dxz
-        easeout dt*0.25 yzoom 1.0 xzoom 1.0
-        easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
-        easeout dt*0.25 yzoom 1.0 xzoom 1.0
-
-    transform ra_disclaimer:
-        zoom 0.9 pos (545, 0)
-        pause (2)
-        linear 1.5 zoom 0.1 pos (0, 7)
-    
-    transform random_alert_transform:
-        zoom 0.1 pos (0, 7)
-
-label dpa_start:
-    call disclaimer
-    call dpa_menu
-    return
-
-label dpa_menu:
-    $ renpy.block_rollback()
-    play music menu_music fadein 2
-    call initVars
-    $ new_chapter(0, u"Меню DPA")
-    scene menu_back with dissolve2
-    call screen example_main_menu with dissolve
-    return
-
-label disclaimer:
-    scene black
-    call screen disclaimer1 with dissolve
-    pause(1)
-    show random_alert at ra_disclaimer with dissolve2
-    pause (1.4)
-    call random_alert_call
-    pause (0.1)
-    call screen disclaimer2 with dissolve
-    pause(1)
-    hide random_alert 
-    call screen disclaimer3 with dissolve
-    pause(1)
-    call qte_label(1,5)
-    pause(1)
-    call screen disclaimer4 with dissolve
-    pause(1)
-    return
-        
-label random_alert_call:
-    show random_alert at random_alert_transform
-    play sound ra_sound
-    return
-
-label dpa_combat_map:
-    show combat_map with dissolve
-    call screen combat_map
-    return
-
-label th_demo_wip:
-    scene black with dissolve2
-    stop sound
-    call screen th_for_read with dissolve
-    jump dpa_menu
-    return
-
-label qte_label(count=1, time=2):
-    $ qte_count = count
-    while qte_count > 0:
-        if qte_loose:
-            pass
-        else:
-            call screen qte_start(getRandomButton(),time)
-        $ qte_count -= 1
-
-
 label initVars:
     #Меню
     $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
@@ -476,3 +151,20 @@ label initVars:
     $ qte_loose = False
     $ qte_count = 0
     $ companies_lod = "th_demo_wip"
+    return
+    
+label dpa_start:
+    call disclaimer
+    call dpa_menu
+    return
+
+label dpa_menu:
+    $ renpy.block_rollback()
+    play music menu_music fadein 2
+    call initVars
+    $ new_chapter(0, u"Меню DPA")
+    scene menu_back with dissolve2
+    call screen dpa_main_menu with dissolve
+    return
+
+
