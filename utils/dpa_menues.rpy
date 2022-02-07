@@ -15,7 +15,8 @@ init -80:
 
             $ timeofday = persistent.timeofday
 
-            imagebutton auto getFileSayGui("image/screens/dialog/gray/lil_menu_call_%s.png") xpos 1870 ypos 200 action ShowMenu("dpa_menu_selector")
+            imagebutton auto getFileSayGui("gray/lil_menu_call_%s.png") xpos 1870 ypos 200 action ShowMenu("dpa_menu_selector")
+            
 
             if persistent.font_size == "large":
 
@@ -106,7 +107,7 @@ screen dpa_menu_selector:
         yfill True
         action Return()
     
-    add getFile("image/screens/lil_menu_back.png"):
+    add getFile("image/screens/menu/lil_menu_back.png"):
         xalign 0.5
         yalign 0.5
 
