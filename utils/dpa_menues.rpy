@@ -5,7 +5,7 @@ init -81 python:
         return 32
 
     def getFileSayGui(path):
-        return getFile("image/screens/load_save/dialog/"+path)    
+        return getFile("image/screens/dialog/"+path)    
 
 
 init -80:
