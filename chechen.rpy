@@ -81,7 +81,7 @@ init:
 
     image mi8_in2 = getFile("image/cg/mi8_in2_draw.jpg")
     image mi8 = getFile("image/cg/mi8_draw.jpg")
-    image combat_map = getFile("image/screens/menu/image_maps/combat_map/test_map.png")
+    image combat_map = getFile("image/screens//image_maps/combat_map/test_map.png")
     image airport = getFile("image/cg/airport_draw.jpg")
     image airport1 = getFile("image/cg/airport2_draw.jpg")
     image train = getFile("image/cg/train.png")
@@ -92,6 +92,7 @@ init:
     image angar = getFile("image/bg/angar_draw.jpg")
     image goriScetch = getFile("image/bg/goriScetch.jpg")
     image mi8_in1 = getFile("image/bg/mi8_in1_draw.jpg")
+    image mi8_crash = getFile("image/bg/mi8_crash.jpg")
     image palatka = getFile("image/bg/palatka_draw.jpg")
 
     #Меню и иные приколы

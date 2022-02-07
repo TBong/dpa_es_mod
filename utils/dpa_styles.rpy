@@ -1,7 +1,7 @@
 #Стили
 init -98 python:
     style.text_save_load                          = Style(style.default)
-    style.text_save_load.font                     = getFile("Furore.ttf")
+    style.text_save_load.font                     = getFile("fonts/Furore.ttf")
     style.text_save_load.size                     = 60
     style.text_save_load.color                    = "#ffffff"
     style.text_save_load.hover_color              = "#808080"
