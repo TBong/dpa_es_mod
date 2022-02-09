@@ -114,6 +114,7 @@ init:
         repeat
 
     image childhood_memories = ConditionSwitch(
+        "ch_memories=='fish'", "black",
         "ch_memories=='grib'", "grib_cg",
         "ch_memories=='futbol1'", "futbol1_cg",
         "ch_memories=='forest'", "forest_cg",
