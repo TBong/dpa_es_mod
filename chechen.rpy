@@ -1,25 +1,16 @@
 #Базовые переменные
 init -100 python:
-    to_steam = False
+
     if to_steam == True:
         default_dpa_path = ""
     else:
         default_dpa_path = "mods/dpa_es_mod/"
-    
-    #Поинты
-    gen_fp = 0
-    humanity = 0
-    dysmoral = 0
 
-    #Прочее 
-    ch_memories = "default"
-    qte_loose = False
-    qte_count = 0
-    companies_lod = "th_demo_wip"
+
+
 
 init:
-    if to_steam == False:
-        define config.developer = True
+    define config.developer = True
 
     $ mods["dpa_start"]=u"{font=[furore]}Добро пожаловать в {color=#911010}ад"
 
@@ -50,7 +41,7 @@ init:
     $ song_liric = getFile("sound/song/song_liric.mp3")
     $ song_liric2 = getFile("sound/song/song_liric2.mp3")
     $ song_gruz200 = getFile("sound/song/song_gruz200.mp3")
-    $ song_na_mozdok = getFile("sound/song/song_na_mozdok.mp3")
+    $ song_na_mozdok = getFile("sound/song/song_na_mozdok.mp3") 
     $ song_rising_sun = getFile("sound/song/song_rising_sun.mp3")
     $ kombat = getFile("sound/song/kombat.mp3")
 
@@ -137,33 +128,18 @@ init:
     image rs furious blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_furious.png", "romper_stomper/emo/rs_blik.png")
     image rs normal = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png")
     image rs normal blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png", "romper_stomper/emo/rs_blik.png")
-
-label initVars:
-    #Меню
-    $ renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
-    
-    #Поинты
-    $ gen_fp = 0
-    $ humanity = 0
-    $ dysmoral = 0
-
-    #Прочее 
-    $ ch_memories = "default"
-    $ qte_loose = False
-    $ qte_count = 0
-    $ companies_lod = "th_demo_wip"
-    return
     
 label dpa_start:
+    $ updVisual()
     call disclaimer
     call dpa_menu
     return
 
 label dpa_menu:
-    $ renpy.block_rollback()
     play music menu_music fadein 2
-    call initVars
     $ new_chapter(0, u"Меню DPA")
+    call initVars
+    $ renpy.fix_rollback()
     scene menu_back with dissolve2
     call screen dpa_main_menu with dissolve
     return

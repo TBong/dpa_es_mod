@@ -8,55 +8,39 @@ init -81 python:
         return getFile("image/screens/dialog/"+path)    
 
 
-init -80:
-    screen dpa_say_gui:
-    #Экран диалога
-        window background None id "window":
 
-            $ timeofday = persistent.timeofday
-
-            imagebutton auto getFileSayGui("gray/lil_menu_call_%s.png") xpos 1870 ypos 200 action ShowMenu("dpa_menu_selector")
-            
-
-            if persistent.font_size == "large":
-
-                imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
-
-                add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
-
-                imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-                imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
-                imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-                imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
-
-                if not config.skipping:
-                    imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
-                else:
-                    imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
-
-                text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
-                if who:
-                    text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
-
-            elif persistent.font_size == "small":
-
-                imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
-
-                add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
-
-                imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-                imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
-                imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-                imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
-
-                if not config.skipping:
-                    imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
-                else:
-                    imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
-
-                text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
-                if who:
-                    text who id "who" xpos 194 ypos 925 size 28 line_spacing 2             
+screen dpa_say_gui:
+#Экран диалога
+    window background None id "window":
+        
+        if persistent.font_size == "large":
+            imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
+            add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
+            imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
+            imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
+            imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
+            imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
+            if not config.skipping:
+                imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+            else:
+                imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+            text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
+            if who:
+                text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
+        elif persistent.font_size == "small":
+            imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
+            add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
+            imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
+            imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
+            imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
+            imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
+            if not config.skipping:
+                imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+            else:
+                imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+            text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
+            if who:
+                text who id "who" xpos 194 ypos 925 size 28 line_spacing 2             
 
 #Главное меню
 screen dpa_main_menu:
@@ -82,7 +66,7 @@ screen dpa_main_menu:
         auto  getFile("image/screens/menu/exit_2_%s.png")
         xpos 55
         ypos 800
-        action Return()
+        action [ WrapperFunctionCallback(toDefaultSettings), MainMenu() ]
     text "{font=[furore]}Добро пожаловать в":
         xpos 1000
         ypos 33
@@ -123,7 +107,7 @@ screen dpa_menu_selector:
         yalign 0.35
         text_style "text_save_load"
         style "button_none"
-        action MainMenu()
+        action [ WrapperFunctionCallback(toDefaultSettings), MainMenu() ]
 
     textbutton ["Сохранение"]:
         xalign 0.5
@@ -167,7 +151,7 @@ screen dpa_Load:
             xalign 0.5
             text_style "text_save_load"
             style "button_none"
-            action FileLoad(selected_slot)
+            action [ WrapperFunctionCallbackWithArg(loadSavedFile,selected_slot), FileLoad(selected_slot) ]
 
         textbutton ["Удалить"]:
             xpos 1500

@@ -1,4 +1,5 @@
 label prolog:
+    $ updVisual()
     stop music fadeout 2
     scene black with dissolve2
     pause (1)
@@ -103,5 +104,14 @@ label prolog:
     stop music
     scene combat_map with dissolve
     call dpa_combat_map
-    $ renpy.call_in_new_context(companies_lod)
+    if companies_lod ==  "bamut":
+        call bamut
+    elif companies_lod ==  "u_m":
+        call u_m
+    elif companies_lod ==  "argun":
+        call argun
+    elif companies_lod ==  "gudermes":
+        call gudermes
+    else:
+        call th_demo_wip
     return

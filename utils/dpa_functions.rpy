@@ -1,4 +1,54 @@
 
+init python:
+    class WrapperFunctionCallbackWithArg(Action):
+        def __init__(self,function,*arguments):
+                self.function=function
+                self.arguments=arguments
+        def __call__(self):
+            return self.function(self.arguments)
+
+    class WrapperFunctionCallback(Action):
+        def __init__(self,function,*arguments):
+                self.function=function
+        def __call__(self):
+            return self.function()
+    
+    def saveOldVisual():
+        if oldMenuWasSaved == True:
+            return
+
+        renpy.display.screen.screens[("dpa_say_gui_old",None)] = renpy.display.screen.screens[("say",None)]
+        renpy.display.screen.screens[("dpa_game_menu_selector_old",None)] = renpy.display.screen.screens[("game_menu_selector",None)]
+        renpy.log(oldMenuWasSaved)
+        global oldMenuWasSaved
+        oldMenuWasSaved = True
+        #Call("setMenuVar",True)
+
+    def updVisual():
+        saveOldVisual()
+        if oldMenuWasSaved == False:
+            return
+        renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
+        renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_menu_selector",None)]
+    
+    def rollbackVisual():
+        if oldMenuWasSaved == False:
+            return
+        renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui_old",None)]
+        renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_game_menu_selector_old",None)]
+        #Call("setMenuVar",False)
+        global oldMenuWasSaved
+        oldMenuWasSaved = False
+
+    def toDefaultSettings():
+        Call("initVars")
+        rollbackVisual()
+    
+    def loadSavedFile(slot):
+        if FileSaveName(slot).__contains__("DPA") :
+            return
+        toDefaultSettings()
+
 #Базовые функции
 init -99 python:
     def getFile(file):
