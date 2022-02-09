@@ -5,13 +5,13 @@ init -100 python:
         default_dpa_path = ""
     else:
         default_dpa_path = "mods/dpa_es_mod/"
-        config.developer = True
+        
 
 
 
 
 init:
-
+    define config.developer = True
     $ saveOldVisual()
 
     $ mods["dpa_start"]=u"{font=[furore]}Добро пожаловать в {color=#911010}ад"

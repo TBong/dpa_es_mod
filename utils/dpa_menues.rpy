@@ -100,7 +100,7 @@ screen dpa_menu_selector:
         yalign 0.25
         text_style "text_save_load"
         style "button_none"
-        action Jump("dpa_menu")
+        action (Return()), (Jump("dpa_menu"))
 
     textbutton ["Меню БЛ"]:
         xalign 0.5
