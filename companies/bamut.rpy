@@ -6,7 +6,7 @@ label bamut:
 
 label bamut_prolog:
     "Бамут."
-    $ new_chapter(0, u"Пролог: \"Бамут\"")
+    $ dpaNewChapter(0, "Пролог: \"Бамут\"")
     stop music fadeout 2
     show palatka with dissolve
     return

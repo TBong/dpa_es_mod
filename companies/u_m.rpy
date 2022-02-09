@@ -6,7 +6,7 @@ label u_m:
 
 label u_m_prolog:
     "Урус-Мартан"
-    $ new_chapter(0, u"Пролог: \"Урус-Мартан\"")
+    $ dpaNewChapter(0, "Пролог: \"Урус-Мартан\"")
     stop music fadeout 2
     show palatka with dissolve
     return

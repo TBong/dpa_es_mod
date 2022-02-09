@@ -1,6 +1,6 @@
 init -999:
-    $ oldMenuWasSaved = False
     $ to_steam = False
+    $ dpa_version = "0.1-A"
     call initVars
 
 label initVars:

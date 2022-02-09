@@ -1,46 +1,25 @@
 
-init python:
-    class WrapperFunctionCallbackWithArg(Action):
+init -1 python:
+    class WrapperFunctionCallback(Action):
         def __init__(self,function,*arguments):
                 self.function=function
                 self.arguments=arguments
         def __call__(self):
             return self.function(self.arguments)
-
-    class WrapperFunctionCallback(Action):
-        def __init__(self,function,*arguments):
-                self.function=function
-        def __call__(self):
-            return self.function()
     
     def saveOldVisual():
-        if oldMenuWasSaved == True:
-            return
-
         renpy.display.screen.screens[("dpa_say_gui_old",None)] = renpy.display.screen.screens[("say",None)]
         renpy.display.screen.screens[("dpa_game_menu_selector_old",None)] = renpy.display.screen.screens[("game_menu_selector",None)]
-        renpy.log(oldMenuWasSaved)
-        global oldMenuWasSaved
-        oldMenuWasSaved = True
-        #Call("setMenuVar",True)
 
     def updVisual():
-        saveOldVisual()
-        if oldMenuWasSaved == False:
-            return
         renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
         renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_menu_selector",None)]
     
     def rollbackVisual():
-        if oldMenuWasSaved == False:
-            return
         renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui_old",None)]
         renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_game_menu_selector_old",None)]
-        #Call("setMenuVar",False)
-        global oldMenuWasSaved
-        oldMenuWasSaved = False
 
-    def toDefaultSettings():
+    def toDefaultSettings(*arg):
         Call("initVars")
         rollbackVisual()
     
@@ -69,6 +48,10 @@ init -99 python:
 
     def getRandomButton():
         return getRandomItem(['1','2','3','4','5','6','7','8','9','0','z','x','c','j','i','o','b','t','h'])
+    
+    def dpaNewChapter(dayNum, chapterName):
+        global save_name
+        save_name = (u"DPA v%s: День %s %s") % (dpa_version, dayNum, chapterName)
     
     def bakeSpriteDefaultSizeSold(sizeX, sizeY, posX, posY, character, emo, special="null.png"):
         return ConditionSwitch(

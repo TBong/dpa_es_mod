@@ -3,7 +3,7 @@ label prolog:
     stop music fadeout 2
     scene black with dissolve2
     pause (1)
-    $ new_chapter(0, u"Пролог: \"Речь президента\"")
+    $ dpaNewChapter(0, "Пролог: \"Речь президента\"")
     play music fon1
     show eltsin1 with dissolve2
     elt "Дорогие сограждане!"
@@ -41,7 +41,7 @@ label prolog:
     
     $ renpy.movie_cutscene(getFile("movie/movie1.webm"))
     pause (2)
-    $ new_chapter(0, u"Пролог: \"Начало пути\"")
+    $ dpaNewChapter(0, "Пролог: \"Начало пути\"")
     play sound mi8
     show airport with dissolve2
     "С нами прилетели спецы из Асбеста, а также группа офицеров, как и мы, присланных для пополнения {font=[brokenFont]}D78{/font}-го полка."

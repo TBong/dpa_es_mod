@@ -6,7 +6,7 @@ label argun:
 
 label argun_prolog:
     "Аргун."
-    $ new_chapter(0, u"Пролог: \"Аргун\"")
+    $ dpaNewChapter(0, "Пролог: \"Аргун\"")
     kp "Готовься, твой “борт” вылетает завтра."
     show gruz200 with dissolve
     play music song_na_mozdok volume 0.5 fadein 2
@@ -34,7 +34,7 @@ label argun_prolog:
     return
 
 label argun_day1:
-    $ new_chapter(0, u"Аргун день 1:\"Вылет\"")
+    $ dpaNewChapter(0, "Аргун день 1:\"Вылет\"")
     show mi8 with dissolve
     pause (2)
     "Утром мы уже грузились на «Борт»."
@@ -71,7 +71,7 @@ label argun_day1:
         "Я начал чувствовать слабость по всему телу,{w} всё вокруг начало терять краски,{w} сознание затуманивалось."
         hide mi8_in2 with dissolve2
         $ renpy.movie_cutscene(getFile("movie/movie2.webm"))
-        $ new_chapter(0, u"Аргун эпилог:\"Конец?\"")
+        $ dpaNewChapter(0, "Аргун эпилог:\"Конец?\"")
         show anim prolog_1 with dissolve
         th "И это всё?"
         th "Я заканчиваю на этом? Прямо сейчас?"

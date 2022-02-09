@@ -151,7 +151,7 @@ screen dpa_Load:
             xalign 0.5
             text_style "text_save_load"
             style "button_none"
-            action [ WrapperFunctionCallbackWithArg(loadSavedFile,selected_slot), FileLoad(selected_slot) ]
+            action [ WrapperFunctionCallback(loadSavedFile,selected_slot), FileLoad(selected_slot) ]
 
         textbutton ["Удалить"]:
             xpos 1500
@@ -198,7 +198,9 @@ screen dpa_Load:
                         yfill False
                         style "file_load_button"
                         fixed:
-                            text ( "%s." % i + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language]) + "\n" +FileSaveName(i)):
+                            text ( "%s." % i
+                                   + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])
+                                   + "\n" +FileSaveName(i)):
                                 xpos 15
                                 ypos 15
 
@@ -280,6 +282,8 @@ screen dpa_Save:
                         yfill False
                         style "file_load_button"
                         fixed:
-                            text ( "%s." % i + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language]) + "\n" +FileSaveName(i)):
+                            text ( "%s." % i
+                                   + FileTime(i, format=' %d.%m.%y, %H:%M', empty=" "+translation["Empty_slot"][_preferences.language])
+                                   + "\n" +FileSaveName(i)):
                                 xpos 15
                                 ypos 15
