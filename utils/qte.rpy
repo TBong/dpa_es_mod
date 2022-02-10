@@ -25,6 +25,6 @@ label qte_label(count=1, time=2):
     return
         
 label random_alert_call:
-    show random_alert at random_alert_transform
+    show random_alert at random_alert_transform with dissolve
     play sound ra_sound
     return

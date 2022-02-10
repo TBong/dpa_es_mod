@@ -92,8 +92,6 @@ init:
     image random_alert:
         getFile("image/screens/ra_anim/random_alert0.png")
         0.3
-        getFile("image/screens/ra_anim/random_alert1.png")
-        0.3
         getFile("image/screens/ra_anim/random_alert2.png")
         0.3
         getFile("image/screens/ra_anim/random_alert3.png")
@@ -117,6 +115,10 @@ init:
         "ch_memories=='futbol1'", "futbol1_cg",
         "ch_memories=='forest'", "forest_cg",
         "ch_memories=='stadion'","stadion_cg",
+        True, "angar"
+    )
+    image gruz200_memories = ConditionSwitch(
+        "g2_memories=='g2'", "gruz200",
         True, "angar"
     )
 

@@ -18,6 +18,7 @@ label initPoint:
 
 label initOther:
     $ ch_memories = "default"
+    $ g2_memories = "default"
     $ qte_loose = False
     $ qte_count = 0
     $ companies_lod = "th_demo_wip"
