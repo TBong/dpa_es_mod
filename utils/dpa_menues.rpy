@@ -95,44 +95,37 @@ screen dpa_menu_selector:
         xalign 0.5
         yalign 0.5
 
-    textbutton ["Меню мода"]:
-        xalign 0.5
-        yalign 0.25
-        text_style "text_save_load"
-        style "button_none"
-        action (Return()), (Jump("dpa_menu"))
-
     textbutton ["Меню БЛ"]:
         xalign 0.5
-        yalign 0.35
+        yalign 0.30
         text_style "text_save_load"
         style "button_none"
         action [ WrapperFunctionCallback(toDefaultSettings), MainMenu() ]
 
     textbutton ["Сохранение"]:
         xalign 0.5
-        yalign 0.45
+        yalign 0.40
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('dpa_Save')
     
     textbutton ["Загрузка"]:
         xalign 0.5
-        yalign 0.55
+        yalign 0.50
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('dpa_Load')
     
     textbutton ["Настройки"]:
         xalign 0.5
-        yalign 0.65
+        yalign 0.60
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('preferences')
     
     textbutton ["Выход"]:
         xalign 0.5
-        yalign 0.75
+        yalign 0.70
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('quit')
@@ -151,7 +144,7 @@ screen dpa_Load:
             xalign 0.5
             text_style "text_save_load"
             style "button_none"
-            action [ WrapperFunctionCallback(loadSavedFile,selected_slot), FileLoad(selected_slot) ]
+            action [ WrapperFunctionCallback(rollbackVisual,selected_slot), FileLoad(selected_slot) ]
 
         textbutton ["Удалить"]:
             xpos 1500

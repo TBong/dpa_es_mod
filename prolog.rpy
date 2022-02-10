@@ -1,5 +1,4 @@
 label prolog:
-    $ updVisual()
     stop music fadeout 2
     scene black with dissolve2
     pause (1)

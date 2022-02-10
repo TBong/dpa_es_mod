@@ -15,7 +15,7 @@ init -1 python:
         renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui",None)]
         renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_menu_selector",None)]
     
-    def rollbackVisual():
+    def rollbackVisual(*arg):
         renpy.display.screen.screens[("say",None)] = renpy.display.screen.screens[("dpa_say_gui_old",None)]
         renpy.display.screen.screens[("game_menu_selector",None)] = renpy.display.screen.screens[("dpa_game_menu_selector_old",None)]
 
@@ -23,10 +23,9 @@ init -1 python:
         Call("initVars")
         rollbackVisual()
     
-    def loadSavedFile(slot):
-        if FileSaveName(slot).__contains__("DPA") :
-            return
-        toDefaultSettings()
+    def dpaNewChapter(dayNum, chapterName):
+        dpaSetChapter(dayNum, chapterName)
+        updVisual()
 
 #Базовые функции
 init -99 python:
@@ -49,7 +48,7 @@ init -99 python:
     def getRandomButton():
         return getRandomItem(['1','2','3','4','5','6','7','8','9','0','z','x','c','j','i','o','b','t','h'])
     
-    def dpaNewChapter(dayNum, chapterName):
+    def dpaSetChapter(dayNum, chapterName):
         global save_name
         save_name = (u"DPA v%s: День %s %s") % (dpa_version, dayNum, chapterName)
     

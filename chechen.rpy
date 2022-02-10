@@ -6,12 +6,10 @@ init -100 python:
     else:
         default_dpa_path = "mods/dpa_es_mod/"
         
-
-
-
+init 999:
+    define config.developer = True
 
 init:
-    define config.developer = True
     $ saveOldVisual()
 
     $ mods["dpa_start"]=u"{font=[furore]}Добро пожаловать в {color=#911010}ад"
@@ -64,7 +62,7 @@ init:
     $ ra_sound = getFile("sound/sfx/ra_sound.mp3")
 
     #Пикчи позже будет норм сорт 
-    image gazeta1 = getFile("image/cg/gazeta1_draw.jpg")
+    image gazeta1 = im.FactorScale(getFile("image/cg/gazeta1_draw.jpg"),1.1)
     image futbol1_cg = getFile("image/cg/futbol1.jpg")
     image grib_cg = getFile("image/cg/grib_draw.jpg")
     image forest_cg = getFile("image/cg/forest_draw.jpg")
@@ -142,7 +140,7 @@ label dpa_menu:
     play music menu_music fadein 2
     $ new_chapter(0, u"Меню DPA")
     call initVars
-    $ renpy.fix_rollback()
+    $ updVisual()
     scene menu_back with dissolve2
     call screen dpa_main_menu with dissolve
     return
