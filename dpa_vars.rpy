@@ -1,6 +1,8 @@
 init -999:
     $ to_steam = False
     $ dpa_version = "0.1-A"
+    $ dpa_music_list = {}
+    $ dpa_music_names = {}
     call initVars
 
 label initVars:

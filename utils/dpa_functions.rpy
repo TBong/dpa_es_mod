@@ -42,6 +42,15 @@ init -99 python:
         if to_steam == True:
             return "th_demo_wip"
         return name
+
+    def regMusic(song_name,ru_lang,m_file):
+        toRet = getFile(m_file)
+        dpa_music_list[song_name] = toRet
+        dpa_music_names[song_name] = ru_lang
+        return toRet
+    
+    def getMusic(music_name):
+        return dpa_music_list[music_name]
     
     def canEventPlay(probability):
         rolled = renpy.random.randint(1, 100)
