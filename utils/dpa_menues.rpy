@@ -162,6 +162,7 @@ screen dpa_nvl:
     else:
         imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xpos 1716 ypos 972 action Skip()
     imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 1072 action ShowMenu("text_history")
+    
 #Главное меню
 screen dpa_main_menu:
     tag menu
