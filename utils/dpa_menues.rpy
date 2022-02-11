@@ -7,7 +7,34 @@ init -81 python:
     def getFileSayGui(path):
         return getFile("image/screens/dialog/"+path)    
 
+screen dpa_say_gui_reborn:
+    window background None id "window":
+        if persistent.font_size == "large":
+            add getFileSayGui("gray_reborn/dialog_box_large.png") xpos -5 ypos 863
 
+            if not config.skipping:
+                imagebutton auto getFileSayGui("gray_reborn/forward_l_%s.png") xpos 1750 ypos 912 action Skip()
+            else:
+                imagebutton auto getFileSayGui("gray_reborn/forward_l_f_%s.png") xpos 1750 ypos 912 action Skip()
+
+            imagebutton auto getFileSayGui("gray_reborn/backward_l_%s.png") xpos -10 ypos 912 action ShowMenu("text_history")
+
+            text what id "what" xpos 155 ypos 934 xmaximum 1610 size 35 line_spacing 2
+            if who:
+                text who id "who" xpos 180 ypos 895 size 35 line_spacing 2
+        elif persistent.font_size == "small":
+            add getFileSayGui("gray_reborn/dialog_box.png") xpos -5 ypos 913
+
+            if not config.skipping:
+                imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xpos 1816 ypos 972 action Skip()
+            else:
+                imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xpos 1816 ypos 972 action Skip()
+
+            imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 972 action ShowMenu("text_history")
+
+            text what id "what" xpos 155 ypos 969 xmaximum 1610 size 28 line_spacing 2
+            if who:
+                text who id "who" xpos 180 ypos 935 size 28 line_spacing 2    
 
 screen dpa_say_gui:
 #Экран диалога
@@ -40,8 +67,101 @@ screen dpa_say_gui:
                 imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
             text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
             if who:
-                text who id "who" xpos 194 ypos 925 size 28 line_spacing 2             
+                text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
 
+screen dpa_choice:
+    modal True
+    window:
+        background Frame(getFile("image/screens/menu/choice.png"),50,50)
+        xfill True
+        yalign 0.5
+        left_padding 75
+        right_padding 75
+        bottom_padding 50
+        top_padding 50
+        vbox:
+            xalign 0.5
+            for caption, action, chosen  in items:
+                if action and caption:
+                    button:
+                        background None
+                        xalign 0.5
+                        action action
+                        text caption:
+                            font furore 
+                            size 35
+                            hover_size 35
+                            idle_color "#474747"
+                            color "#474747"
+                            hover_color "#fff"
+                            xcenter 0.5
+                else:
+                    button:
+                        background None
+                        xalign 0.5
+                        action action
+                        text caption:
+                            font furore
+                            size 35
+                            hover_size 35
+                            idle_color "#474747"
+                            color "#474747"
+                            hover_color "#fff"
+                            xcenter 0.5  
+                
+            xcenter 0.5 
+            ycenter 0.5      
+
+screen dpa_nvl:
+    window:
+        background Frame(getFile("image/screens/menu/choice.png"),50,50)
+        xfill True
+        yfill True
+        yalign 0.5
+        left_padding 125
+        right_padding 125
+        bottom_padding 100
+        top_padding 100
+        vbox:
+            for who, what, who_id, what_id, window_id  in dialogue:
+                window:
+                    id window_id
+                    hbox:
+                        spacing 10
+                        if persistent.font_size == "large":
+                            if who is not None:
+                                text who:
+                                    id who_id
+                                    size 29
+                                    line_spacing 2
+                                    
+                            text what:
+                                id what_id
+                                size 26
+                                line_spacing 3
+                                # font "mods/lampleto/ARIALUNI.TTF"
+                                color "#ffffff"
+
+                        elif persistent.font_size == "small":
+                            if who is not None:
+                                text who:
+                                    id who_id
+                                    size 28
+                                    # font "mods/lampleto/17680.otf"
+                                    line_spacing 2
+                
+                            text what:
+                                id what_id
+                                size 24
+                                # font "mods/lampleto/ARIALUNI.TTF"
+                                line_spacing 3
+                                kerning 1
+                                color "#ffffff" 
+    if not config.skipping:
+        imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xpos 1716 ypos 972 action Skip()
+    else:
+        imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xpos 1716 ypos 972 action Skip()
+    imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 1072 action ShowMenu("text_history")
 #Главное меню
 screen dpa_main_menu:
     tag menu
@@ -129,6 +249,13 @@ screen dpa_menu_selector:
         text_style "text_save_load"
         style "button_none"
         action ShowMenu('quit')
+    
+    textbutton ["Откл. DPA GUI"]:
+        xalign 1.0
+        yalign 1.0
+        style "button_none"
+        text_style "text_save_load"
+        action [ WrapperFunctionCallback(rollbackVisual), Return() ]
  
 #Меню загрузки
 screen dpa_Load:
@@ -144,7 +271,7 @@ screen dpa_Load:
             xalign 0.5
             text_style "text_save_load"
             style "button_none"
-            action [ WrapperFunctionCallback(rollbackVisual,selected_slot), FileLoad(selected_slot) ]
+            action [ FileLoad(selected_slot) ]
 
         textbutton ["Удалить"]:
             xpos 1500
