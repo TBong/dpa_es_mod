@@ -3,7 +3,6 @@ init 10 python:
     loop_track = False
     renpy.music.register_channel("dpa_music_player", "music")
     renpy.music.set_pause(True, "dpa_music_player")
-    renpy.music.set_queue_empty_callback(getNextTrack(), "dpa_music_player")
 
     def getNextTrack():
         if selected_track == -1:
@@ -42,6 +41,8 @@ init 10 python:
         global loop_track
         loop_track = False
         renpy.music.stop("dpa_music_player")
+        
+    renpy.music.set_queue_empty_callback(getNextTrack(), "dpa_music_player")
     
 # 
 # из 7 дл
