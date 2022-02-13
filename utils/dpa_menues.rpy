@@ -158,10 +158,10 @@ screen dpa_nvl:
                                 kerning 1
                                 color "#ffffff" 
     if not config.skipping:
-        imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xpos 1716 ypos 972 action Skip()
+        imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xalign 0.95 ypos 950 action Skip()
     else:
-        imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xpos 1716 ypos 972 action Skip()
-    imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 1072 action ShowMenu("text_history")
+        imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xalign 0.95 ypos 950 action Skip()
+    imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xalign 0.05 ypos 950 action ShowMenu("text_history")
     
 #Главное меню
 screen dpa_main_menu:
@@ -177,7 +177,7 @@ screen dpa_main_menu:
         auto getFile("image/screens/menu/load_2_%s.png")
         xpos 55
         ypos 400
-        action ShowMenu('dpa_Load')
+        action ShowMenu('dpa_player')
     imagebutton:
         auto getFile("image/screens/menu/gallery_2_%s.png")
         xpos 55

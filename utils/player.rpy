@@ -43,7 +43,19 @@ init 10 python:
         renpy.music.stop("dpa_music_player")
         
     renpy.music.set_queue_empty_callback(getNextTrack(), "dpa_music_player")
-    
+
+screen dpa_player:
+
+    imagebutton xalign 0.42 ypos 150:
+        auto getFile("image/screens/player/player_back_%s.png")
+        action
+    imagebutton xalign 0.5 ypos 150:
+        auto getFile("image/screens/player/player_play_%s.png")
+        action
+    imagebutton xalign 0.58 ypos 150:
+        auto getFile("image/screens/player/player_next_%s.png")
+        action
+
 # 
 # из 7 дл
 # screen music_7dl(engine=sdl_mus_engine, default_music):

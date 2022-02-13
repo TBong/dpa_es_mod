@@ -146,5 +146,3 @@ label dpa_menu:
     scene menu_back with dissolve2
     call screen dpa_main_menu with dissolve
     return
-
-

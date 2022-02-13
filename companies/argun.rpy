@@ -52,7 +52,8 @@ label argun_day1:
         "Вертолёт начал резко менять свой курс."
         play sound hit
         "Я услышал приближающийся к нам незнакомый мне звук."
-        scene mi8_in2 at zoom_to(0.5,0.5,0.5,1.5) 
+        scene black
+        show mi8_in2 at fall
             
         "Вертолёт подпрыгнул и начал крутиться вокруг своей оси."
         "В голове ветала одна мысль."
@@ -67,7 +68,8 @@ label argun_day1:
         "Я не понимал что делать.{w} Уши будто заложило."
         "Практически никаких звуков не было слышно."
         "Я начал чувствовать слабость по всему телу,{w} всё вокруг начало терять краски,{w} сознание затуманивалось."
-        $ renpy.movie_cutscene(getFile("movie/movie2.webm"))
+        hide mi8_in2 with dissolve
+        $ renpy.movie_cutscene(getFile("movie/movie2.webm")) 
         $ dpaNewChapter(0, "Аргун эпилог:\"Конец?\"")
         scene anim prolog_1 with dissolve
         th "И это всё?"
