@@ -22,6 +22,7 @@ init -1 python:
     def toDefaultSettings(*arg):
         Call("initVars")
         rollbackVisual()
+        renpy.music.stop("dpa_music_player", 1)
     
     def dpaNewChapter(dayNum, chapterName):
         dpaSetChapter(dayNum, chapterName)
