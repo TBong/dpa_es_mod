@@ -33,6 +33,7 @@ init:
 
     #Музыка
     $ fon1 = regMusic("fon1","NN","sound/song/fon1.mp3")
+    $ song_crash= regMusic("song_crash","Свидетельство о смерти - чуть-чуть меня ","sound/song/song_а_little_bit_of_me.mp3")
     $ shturm = regMusic("shturm","Сергей Тимошенко - Штурм","sound/song/shturm.mp3")
     $ song1 = regMusic("song1","В военкомате случай был","sound/song/song1.mp3")
     $ song_ep = regMusic("song_ep","NN","sound/song/song_ep.mp3")
