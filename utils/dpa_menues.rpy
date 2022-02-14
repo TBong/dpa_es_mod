@@ -172,12 +172,12 @@ screen dpa_main_menu:
         auto  getFile("image/screens/menu/nachat_2_%s.png")
         xpos 55
         ypos 200
-        action (Hide("dpa_main_menu", transition=dissolve)), (Call("prolog"))
+        action (Function(renpy.music.stop,"dpa_music_player", 2)), (Hide("dpa_main_menu", transition=dissolve)), (Call("prolog"))
     imagebutton:
         auto getFile("image/screens/menu/load_2_%s.png")
         xpos 55
         ypos 400
-        action ShowMenu('dpa_player')
+        action [Function(renpy.music.stop, "music", 1), ShowMenu('dpa_player')]
     imagebutton:
         auto getFile("image/screens/menu/gallery_2_%s.png")
         xpos 55
@@ -187,7 +187,7 @@ screen dpa_main_menu:
         auto  getFile("image/screens/menu/exit_2_%s.png")
         xpos 55
         ypos 800
-        action [ WrapperFunctionCallback(toDefaultSettings), MainMenu() ]
+        action [ Function(toDefaultSettings), MainMenu() ]
     text "{font=[furore]}Добро пожаловать в":
         xpos 1000
         ypos 33
@@ -221,7 +221,7 @@ screen dpa_menu_selector:
         yalign 0.30
         text_style "text_save_load"
         style "button_none"
-        action [ WrapperFunctionCallback(toDefaultSettings), MainMenu() ]
+        action [ Function(toDefaultSettings), MainMenu() ]
 
     textbutton ["Сохранение"]:
         xalign 0.5
@@ -256,7 +256,7 @@ screen dpa_menu_selector:
         yalign 1.0
         style "button_none"
         text_style "text_save_load"
-        action [ WrapperFunctionCallback(rollbackVisual), Return() ]
+        action [ Function(rollbackVisual), Return() ]
  
 #Меню загрузки
 screen dpa_Load:
@@ -272,7 +272,7 @@ screen dpa_Load:
             xalign 0.5
             text_style "text_save_load"
             style "button_none"
-            action [ FileLoad(selected_slot) ]
+            action [FileLoad(selected_slot) ]
 
         textbutton ["Удалить"]:
             xpos 1500

@@ -1,8 +1,20 @@
 init 10 python:
     selected_track = -1
     loop_track = False
+    track_name = "Null"
     renpy.music.register_channel("dpa_music_player", "music")
     renpy.music.set_pause(True, "dpa_music_player")
+    
+    def getSelectedTrackPath():
+        return dpa_music_list[list(dpa_music_list)[selected_track]]
+
+    def setTrackName():
+        tmpSel = list(dpa_music_list)[selected_track]
+        global track_name
+        track_name = dpa_music_names[str(tmpSel)]
+    
+    def getTrackName():
+        return track_name
 
     def getNextTrack():
         if selected_track == -1:
@@ -12,28 +24,37 @@ init 10 python:
             if selected_track >= len(dpa_music_list):
                 global selected_track
                 selected_track = 0
-        music_path = dpa_music_list[selected_track]
-        renpy.music.queue(music_path,channel='dpa_music_player', loop=loop_track)
-
-    def playByPlayer():
-        renpy.music.stop()
-        renpy.play(dpa_music_list[selected_track])
-        
-    def leavePlayer():
-        if selected_track == -1:
-            renpy.music.queue(menu_music,"music",loop=True)
-        renpy.play(dpa_music_list[selected_track],"music",loop=True)
+        renpy.music.queue(getSelectedTrackPath(),channel='dpa_music_player', loop=loop_track, clear_queue=True)
+        setTrackName()
     
-    def toTrackBA(count):
-        selected_track += count
+    def toTrackBA(num):
+        selected_track += num
+        global selected_track
         if selected_track >= len(dpa_music_list):
-                global selected_track
-                selected_track = 0
-        renpy.music.queue(music_path,channel='dpa_music_player', loop=loop_track)
+            selected_track = 0
+        elif selected_track < 0:
+            selected_track = len(dpa_music_list) - 1
+        renpy.music.stop("dpa_music_player")
+        renpy.music.queue(getSelectedTrackPath(), channel='dpa_music_player', loop=loop_track, clear_queue=True)
+        setTrackName()
+    
+    def isNonePlaying():
+        if renpy.music.get_playing("dpa_music_player") == None:
+            getNextTrack()
+
+    def nextTrack():
+        toTrackBA(1)
+    
+    def prevTrack():
+        toTrackBA(-1)
 
     def dpaPlLoop():
         global loop_track
         loop_track = not loop_track
+    
+    def randomFirst():
+        if selected_track == -1:
+            toTrackBA(renpy.random.randint(1, len(dpa_music_list)))
     
     def resetDPAPlayer():
         global selected_track
@@ -41,20 +62,24 @@ init 10 python:
         global loop_track
         loop_track = False
         renpy.music.stop("dpa_music_player")
-        
-    renpy.music.set_queue_empty_callback(getNextTrack(), "dpa_music_player")
 
 screen dpa_player:
-
     imagebutton xalign 0.42 ypos 150:
         auto getFile("image/screens/player/player_back_%s.png")
-        action
+        action [Function(prevTrack)]
     imagebutton xalign 0.5 ypos 150:
         auto getFile("image/screens/player/player_play_%s.png")
-        action
+        selected not renpy.music.get_pause("dpa_music_player")
+        action [Function(randomFirst), PauseAudio("dpa_music_player", value="toggle")]
     imagebutton xalign 0.58 ypos 150:
         auto getFile("image/screens/player/player_next_%s.png")
-        action
+        action [Function(nextTrack)]
+    text getTrackName():
+        xalign 0.5 
+        ypos 120
+        size 30
+    timer 0.1 repeat True action [Function(setTrackName), Function(isNonePlaying)]
+
 
 # 
 # из 7 дл

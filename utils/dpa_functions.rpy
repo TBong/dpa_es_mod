@@ -1,11 +1,5 @@
 
 init -1 python:
-    class WrapperFunctionCallback(Action):
-        def __init__(self,function,*arguments):
-                self.function=function
-                self.arguments=arguments
-        def __call__(self):
-            return self.function(self.arguments)
     
     def saveOldVisual():
         renpy.display.screen.screens[("dpa_say_gui_old",None)] = renpy.display.screen.screens[("say",None)]
