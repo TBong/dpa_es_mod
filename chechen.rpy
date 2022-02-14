@@ -53,6 +53,7 @@ init:
     $ an12 = getFile("sound/ambinet/an12.mp3")
     $ train_inside_music = getFile("sound/ambinet/train_inside.mp3")
     $ veter = getFile("sound/ambinet/veter.mp3")
+    $ ring = getFile("sound/ambinet/ring.mp3")
 
     #Звуковые эфекты
     $ hit = getFile("sound/sfx/hit.mp3")
