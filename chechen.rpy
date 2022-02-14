@@ -33,15 +33,14 @@ init:
 
     #Музыка
     $ fon1 = regMusic("fon1","1","sound/song/fon1.mp3")
-    $ shturm = regMusic("shturm","2","sound/song/shturm.mp3")
-    $ song1 = regMusic("song1","3","sound/song/song1.mp3")
+    $ shturm = regMusic("shturm","Сергей Тимошенко - Штурм","sound/song/shturm.mp3")
+    $ song1 = regMusic("song1","В военкомате случай был","sound/song/song1.mp3")
     $ song_ep = regMusic("song_ep","4","sound/song/song_ep.mp3")
-    $ song_menu = regMusic("song_menu","5","sound/song/song_menu.mp3")
-    $ song2 = regMusic("song2","6","sound/song/song2.mp3")
+    $ song_menu = regMusic("song_menu","Эрик Осташев - Солдат фортуны","sound/song/song_menu.mp3")
+    $ song2 = regMusic("song2","Здравствуй мама","sound/song/song2.mp3")
     $ song_liric = regMusic("song_liric","7","sound/song/song_liric.mp3")
-    $ song_liric2 = regMusic("song_liric2","8","sound/song/song_liric2.mp3")
-    $ song_gruz200 = regMusic("song_gruz200","9","sound/song/song_gruz200.mp3")
-    $ song_na_mozdok = regMusic("song_na_mazdok","10","sound/song/song_na_mozdok.mp3") 
+    $ song_gruz200 = regMusic("song_gruz200","Груз-200","sound/song/song_gruz200.mp3")
+    $ song_na_mozdok = regMusic("song_na_mazdok","На Моздок","sound/song/song_na_mozdok.mp3") 
     $ song_rising_sun = regMusic("song_rising_sun","The Animals - House of the Rising Sun","sound/song/song_rising_sun.mp3")
     $ kombat = regMusic("kombat","Любэ - Комбат","sound/song/kombat.mp3")
 
