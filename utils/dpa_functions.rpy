@@ -22,7 +22,6 @@ init -1 python:
     def toDefaultSettings(*arg):
         Call("initVars")
         rollbackVisual()
-        renpy.music.stop("dpa_music_player", 1)
     
     def dpaNewChapter(dayNum, chapterName):
         dpaSetChapter(dayNum, chapterName)
@@ -41,7 +40,10 @@ init -99 python:
     def regMusic(song_name,ru_lang,m_file):
         toRet = getFile(m_file)
         dpa_music_list[song_name] = toRet
-        dpa_music_names[song_name] = ru_lang
+        if ru_lang == "NN":
+            dpa_music_names[song_name] = "??? - Без имени"
+        else:
+            dpa_music_names[song_name] = ru_lang
         return toRet
     
     def getMusic(music_name):

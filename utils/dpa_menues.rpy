@@ -196,6 +196,7 @@ screen dpa_main_menu:
         xpos 1350
         ypos 80
         size 70
+    timer 0.1 repeat True action [If(renpy.music.get_playing("dpa_music_player") == None and renpy.music.get_playing() == None, true=Function(playInMain))]
 
 #Маленькое меню
 screen dpa_menu_selector:

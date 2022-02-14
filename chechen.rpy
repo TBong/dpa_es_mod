@@ -141,6 +141,7 @@ label dpa_start:
 label dpa_menu:
     play music menu_music fadein 2
     $ new_chapter(0, u"Меню DPA")
+    # $ resetDPAPlayer()
     call initVars
     $ updVisual()
     scene menu_back with dissolve2
