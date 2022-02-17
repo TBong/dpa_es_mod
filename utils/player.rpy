@@ -11,14 +11,14 @@ init 10 python:
     def setTrackName():
         tmpSel = list(dpa_music_list)[selected_track]
         global track_name
-        track_name = getTrakName(tmpSel)
+        track_name = getTrackName(tmpSel)
     
     def getSelectedTrackName():
         return track_name
     
-    def getTrakName(track):
+    def getTrackName(track):
         return dpa_music_names[track]
-    
+
     def getTrackIndex(name):
         return list(dpa_music_list).index(name)
 
@@ -93,6 +93,10 @@ init 10 python:
         nn_count = 0
         renpy.music.stop("dpa_music_player")
 
+    def isNowPlaying(name):
+        return name == list(dpa_music_list)[selected_track]
+        
+
 
 screen dpa_player:
     imagebutton xalign 0.365 ypos 150:
@@ -129,8 +133,9 @@ screen dpa_player:
                 button:
                     xsize 600 
                     ysize 35
-                    text getTrakName(name) xalign 0.5 size 30
+                    text getTrackName(name) xalign 0.5 style "text_select_track"
                     action [Function(toTrack,(getTrackIndex(name)))]
+                    selected isNowPlaying(name)
     timer 0.1 repeat True action [Function(setTrackName), Function(isNonePlaying)]
     on "hide" action [Function(dpaSetLoop,False), Function(dpaSetLeavePl, True)]
     on "show" action [Function(dpaSetLeavePl, False)]

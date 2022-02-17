@@ -174,7 +174,7 @@ screen dpa_main_menu:
         ypos 200
         action (Function(renpy.music.stop,"dpa_music_player", 2)), (Hide("dpa_main_menu", transition=dissolve)), (Call("prolog"))
     imagebutton:
-        auto getFile("image/screens/menu/load_2_%s.png")
+        auto getFile("image/screens/menu/player_button_%s.png")
         xpos 55
         ypos 400
         action [Function(renpy.music.stop, "music", 1), ShowMenu('dpa_player')]

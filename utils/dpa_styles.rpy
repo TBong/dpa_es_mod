@@ -24,6 +24,17 @@ init -98 python:
     style.file_load_button.selected_hover_background = getFile("image/screens/load_save/load_Button_selected.png")
     style.file_load_button.selected_idle_background = getFile("image/screens/load_save/load_Button_selected.png")
 
+    style.text_select_track = Style(style.default)
+    style.text_select_track.color                    = "#c2c2c2"
+    style.text_select_track.hover_color              = "#ffffff"
+    style.text_select_track.selected_color           = "#ffffff"
+    style.text_select_track.selected_idle_color      = "#ffffff"
+    style.text_select_track.selected_hover_color     = "#ffffff"
+    style.text_select_track.insensitive_color        = "#9e9e9e"
+    style.text_select_track.size = 30
+
+
+
 #Переменные от функция
 init -97 python:
     #Шрифты
