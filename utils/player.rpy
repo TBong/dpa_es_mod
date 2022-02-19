@@ -99,17 +99,17 @@ init 10 python:
 
 
 screen dpa_player:
-    imagebutton xalign 0.365 ypos 150:
+    imagebutton xalign 0.365 ypos 200:
         auto getFile("image/screens/player/player_back_%s.png")
         action [Function(prevTrack)]
-    imagebutton xalign 0.455 ypos 150:
+    imagebutton xalign 0.455 ypos 200:
         auto getFile("image/screens/player/player_play_%s.png")
         selected not renpy.music.get_pause("dpa_music_player")
         action [Function(randomFirst), PauseAudio("dpa_music_player", value="toggle")]
-    imagebutton xalign 0.545 ypos 150:
+    imagebutton xalign 0.545 ypos 200:
         auto getFile("image/screens/player/player_next_%s.png")
         action [Function(nextTrack)]
-    imagebutton xalign 0.635 ypos 150:
+    imagebutton xalign 0.635 ypos 200:
         auto getFile('image/screens/player/player_loop_%s.png')
         selected loop_track
         action [Function(dpaPlLoop)]
@@ -119,8 +119,8 @@ screen dpa_player:
         size 30
     side "c":
         xalign 0.5
-        ypos 300
-        xysize (600, 600)
+        ypos 350
+        xysize (600, 700)
 
         default sdl_mus_bar_value = ui.adjustment()
         viewport id "vp_playlist":
@@ -131,6 +131,7 @@ screen dpa_player:
 
             for name in list(dpa_music_list):
                 button:
+                    background Solid("#262626")
                     xsize 600 
                     ysize 35
                     text getTrackName(name) xalign 0.5 style "text_select_track"

@@ -217,7 +217,6 @@ label gudermes_day1:
     "Мой отдых прирвал возглыс."
     sol "О вот и вокзал."
     "Взяв все что у нас было мы вывалились из вагона, перед нами предстал какой то тип."
-    hide train_inside_pic with dissolve
     scene train_open with dissolve
     show rs furious
     show rs furious blik
