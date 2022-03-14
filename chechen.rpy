@@ -30,6 +30,8 @@ init:
     $ ofic = Character (u'Офицер', color="e3b212", what_color="fff")
     $ pil = Character (u'Вертолётчик', color="8599ff", what_color="fff")
     $ sol = Character (u'Солдат', color="23ad00", what_color="fff")
+    $ rac = Character (u'Рация', color="696969", what_color="fff")
+    $ om = Character (u'Старик', color="a16868", what_color="fff")
 
     #Музыка
     $ fon1 = regMusic("fon1","NN","sound/song/fon1.mp3")
@@ -61,6 +63,12 @@ init:
     $ pencil = getFile("sound/sfx/pencil-scratches.mp3")
     $ hitting_iron = getFile("sound/sfx/hitting_iron.mp3")
     $ ra_sound = getFile("sound/sfx/ra_sound.mp3")
+    $ ak74_fireselector_down = getFile("sound/sfx/ak74_fireselector_down.ogg")
+    $ pm_far1 = getFile("sound/sfx/pm_far1.ogg")
+    $ grenade_throw = getFile("sound/sfx/grenade_throw.mp3")
+    $ gren_expl1_close = getFile("sound/sfx/gren_expl1_close.ogg")
+    $ ak74_shooting = getFile("sound/sfx/ak74_shooting.mp3")
+    $ shooting_far = getFile("sound/sfx/shooting_far.mp3")
 
     #Пикчи позже будет норм сорт 
     image gazeta1 = im.FactorScale(getFile("image/cg/gazeta1_draw.jpg"),1.1)
@@ -78,6 +86,7 @@ init:
     image airport1 = getFile("image/cg/airport2_draw.jpg")
     image train = getFile("image/cg/train.png")
     image train_open = getFile("image/cg/train_open.png")
+    image helichrash_combat = getFile("image/cg/helichrash_combat.jpg")
 
     image train_inside_pic = getFile("image/bg/int_train.jpg")
     image cabina = getFile("image/bg/cabina_draw.jpg")
@@ -86,6 +95,8 @@ init:
     image mi8_in1 = getFile("image/bg/mi8_in1_draw.jpg")
     image mi8_crash = getFile("image/bg/mi8_crash.jpg")
     image palatka = getFile("image/bg/palatka_draw.jpg")
+    image village_evening = getFile("image/bg/village_evening.jpg")
+    image chechen_house = getFile("image/bg/chechen_house.jpg")
 
     #Меню и иные приколы
     image menu_back = getFile(getRandomItem(["image/cg/menu_fon1.jpg","image/cg/menu_fon2.png"]))
