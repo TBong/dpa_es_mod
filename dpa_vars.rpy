@@ -3,6 +3,8 @@ init -999:
     $ dpa_version = "0.1-A"
     $ dpa_music_list = {}
     $ dpa_music_names = {}
+    $ dpa_debug_panel = False
+    $ dpa_game_started = False
     call initVars
 
 label initVars:
@@ -19,6 +21,7 @@ label initPoint:
     return
 
 label initOther:
+    $ dpa_game_started = False
     $ ch_memories = "default"
     $ g2_memories = "default"
     $ qte_loose = False

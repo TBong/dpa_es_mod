@@ -2,7 +2,7 @@ label prolog:
     stop music fadeout 2
     scene black with dissolve2
     pause (1)
-    $ dpaNewChapter(0, "Пролог: \"Речь президента\"")
+    $ dpa_new_chapter(0, "Пролог: \"Речь президента\"")
     play music fon1
     show eltsin1 with dissolve2
     elt "Дорогие сограждане!"
@@ -38,9 +38,9 @@ label prolog:
     $ set_mode_adv()
     nvl clear
     
-    $ renpy.movie_cutscene(getFile("movie/movie1.webm"))
+    $ renpy.movie_cutscene(dpa_get_file("movie/movie1.webm"))
     pause (2)
-    $ dpaNewChapter(0, "Пролог: \"Начало пути\"")
+    $ dpa_new_chapter(0, "Пролог: \"Начало пути\"")
     play ambience mi8
     show airport with dissolve2
     "С нами прилетели спецы из Асбеста, а также группа офицеров, как и мы, присланных для пополнения {font=[brokenFont]}D78{/font}-го полка."
@@ -106,6 +106,7 @@ label prolog:
     stop music fadeout 2
     scene combat_map with dissolve
     call dpa_combat_map
+    $ renpy.fix_rollback()
     if companies_lod ==  "bamut":
         call bamut
     elif companies_lod ==  "u_m":

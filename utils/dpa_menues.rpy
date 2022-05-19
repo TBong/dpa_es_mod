@@ -4,33 +4,33 @@ init -81 python:
             return 42
         return 32
 
-    def getFileSayGui(path):
-        return getFile("image/screens/dialog/"+path)    
+    def dpa_get_fileSayGui(path):
+        return dpa_get_file("image/screens/dialog/"+path)    
 
 screen dpa_say_gui_reborn:
     window background None id "window":
         if persistent.font_size == "large":
-            add getFileSayGui("gray_reborn/dialog_box_large.png") xpos -5 ypos 863
+            add dpa_get_fileSayGui("gray_reborn/dialog_box_large.png") xpos -5 ypos 863
 
             if not config.skipping:
-                imagebutton auto getFileSayGui("gray_reborn/forward_l_%s.png") xpos 1750 ypos 912 action Skip()
+                imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_l_%s.png") xpos 1750 ypos 912 action Skip()
             else:
-                imagebutton auto getFileSayGui("gray_reborn/forward_l_f_%s.png") xpos 1750 ypos 912 action Skip()
+                imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_l_f_%s.png") xpos 1750 ypos 912 action Skip()
 
-            imagebutton auto getFileSayGui("gray_reborn/backward_l_%s.png") xpos -10 ypos 912 action ShowMenu("text_history")
+            imagebutton auto dpa_get_fileSayGui("gray_reborn/backward_l_%s.png") xpos -10 ypos 912 action ShowMenu("text_history")
 
             text what id "what" xpos 155 ypos 934 xmaximum 1610 size 35 line_spacing 2
             if who:
                 text who id "who" xpos 180 ypos 895 size 35 line_spacing 2
         elif persistent.font_size == "small":
-            add getFileSayGui("gray_reborn/dialog_box.png") xpos -5 ypos 913
+            add dpa_get_fileSayGui("gray_reborn/dialog_box.png") xpos -5 ypos 913
 
             if not config.skipping:
-                imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xpos 1816 ypos 972 action Skip()
+                imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_%s.png") xpos 1816 ypos 972 action Skip()
             else:
-                imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xpos 1816 ypos 972 action Skip()
+                imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_f_%s.png") xpos 1816 ypos 972 action Skip()
 
-            imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 972 action ShowMenu("text_history")
+            imagebutton auto dpa_get_fileSayGui("gray_reborn/backward_%s.png") xpos 14 ypos 972 action ShowMenu("text_history")
 
             text what id "what" xpos 155 ypos 969 xmaximum 1610 size 28 line_spacing 2
             if who:
@@ -41,30 +41,30 @@ screen dpa_say_gui:
     window background None id "window":
         
         if persistent.font_size == "large":
-            imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
-            add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
-            imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-            imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
-            imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-            imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
+            add dpa_get_fileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
             if not config.skipping:
-                imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+                imagebutton auto dpa_get_fileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
             else:
-                imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+                imagebutton auto dpa_get_fileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
             text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
             if who:
                 text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
         elif persistent.font_size == "small":
-            imagebutton auto getFileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
-            add getFileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
-            imagebutton auto getFileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
-            imagebutton auto getFileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
-            imagebutton auto getFileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
-            imagebutton auto getFileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/backward_%s.png") xpos 38 ypos 949 action ShowMenu("text_history") #тут свой путь
+            add dpa_get_fileSayGui("gray/dialogue_box.png") xpos 174 ypos 916 #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/hide_%s.png") xpos 1508 ypos 933 action HideInterface() #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/save_%s.png") xpos 1567 ypos 933 action ShowMenu('dpa_Save') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/menu_%s.png") xpos 1625 ypos 933 action ShowMenu('game_menu_selector') #тут свой путь
+            imagebutton auto dpa_get_fileSayGui("gray/load_%s.png") xpos 1682 ypos 933 action ShowMenu('dpa_Load') #тут свой путь
             if not config.skipping:
-                imagebutton auto getFileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+                imagebutton auto dpa_get_fileSayGui("gray/forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
             else:
-                imagebutton auto getFileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
+                imagebutton auto dpa_get_fileSayGui("gray/fast_forward_%s.png") xpos 1735 ypos 949 action Skip() #тут свой путь
             text what id "what" xpos 194 ypos 959 xmaximum 1541 size 28 line_spacing 2
             if who:
                 text who id "who" xpos 194 ypos 925 size 28 line_spacing 2
@@ -72,7 +72,7 @@ screen dpa_say_gui:
 screen dpa_choice:
     modal True
     window:
-        background Frame(getFile("image/screens/menu/choice.png"),50,50)
+        background Frame(dpa_get_file("image/screens/menu/choice.png"),50,50)
         xfill True
         yalign 0.5
         left_padding 75
@@ -114,7 +114,7 @@ screen dpa_choice:
 
 screen dpa_nvl:
     window:
-        background Frame(getFile("image/screens/menu/choice.png"),50,50)
+        background Frame(dpa_get_file("image/screens/menu/choice.png"),50,50)
         xfill True
         yfill True
         yalign 0.5
@@ -158,36 +158,34 @@ screen dpa_nvl:
                                 kerning 1
                                 color "#ffffff" 
     if not config.skipping:
-        imagebutton auto getFileSayGui("gray_reborn/forward_%s.png") xalign 0.95 ypos 950 action Skip()
+        imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_%s.png") xalign 0.95 ypos 950 action Skip()
     else:
-        imagebutton auto getFileSayGui("gray_reborn/forward_f_%s.png") xalign 0.95 ypos 950 action Skip()
-    imagebutton auto getFileSayGui("gray_reborn/backward_%s.png") xalign 0.05 ypos 950 action ShowMenu("text_history")
+        imagebutton auto dpa_get_fileSayGui("gray_reborn/forward_f_%s.png") xalign 0.95 ypos 950 action Skip()
+    imagebutton auto dpa_get_fileSayGui("gray_reborn/backward_%s.png") xalign 0.05 ypos 950 action ShowMenu("text_history")
     
 #Главное меню
 screen dpa_main_menu:
-    tag menu
-    modal True
-    add getFile("image/screens/menu/fon_text.png")
+    add dpa_get_file("image/screens/menu/fon_text.png")
     imagebutton:
-        auto  getFile("image/screens/menu/nachat_2_%s.png")
+        auto  dpa_get_file("image/screens/menu/nachat_2_%s.png")
         xpos 55
         ypos 200
-        action (Function(renpy.music.stop,"dpa_music_player", 2)), (Hide("dpa_main_menu", transition=dissolve)), (Call("prolog"))
+        action [Hide("dpa_main_menu", transition=dissolve), Hide('music_room_dpa_reborn'), Hide('wip'), Jump("startMod")]
     imagebutton:
-        auto getFile("image/screens/menu/player_button_%s.png")
+        auto dpa_get_file("image/screens/menu/player_button_%s.png")
         xpos 55
         ypos 400
-        action [Function(renpy.music.stop, "music", 1), ShowMenu('dpa_player')]
+        action [Function(renpy.music.stop, "music", 1), ShowMenu('music_room_dpa_reborn')]
     imagebutton:
-        auto getFile("image/screens/menu/gallery_2_%s.png")
+        auto dpa_get_file("image/screens/menu/gallery_2_%s.png")
         xpos 55
         ypos 600
         action ShowMenu('wip')
     imagebutton:
-        auto  getFile("image/screens/menu/exit_2_%s.png")
+        auto  dpa_get_file("image/screens/menu/exit_2_%s.png")
         xpos 55
         ypos 800
-        action [ Function(toDefaultSettings), MainMenu() ]
+        action [ Function(dpa_to_default_settings), MainMenu() ]
     text "{font=[furore]}Добро пожаловать в":
         xpos 1000
         ypos 33
@@ -196,7 +194,6 @@ screen dpa_main_menu:
         xpos 1350
         ypos 80
         size 70
-    timer 0.1 repeat True action [If(renpy.music.get_playing("dpa_music_player") == None and renpy.music.get_playing() == None, true=Function(playInMain))]
 
 #Маленькое меню
 screen dpa_menu_selector:
@@ -213,7 +210,7 @@ screen dpa_menu_selector:
         yfill True
         action Return()
     
-    add getFile("image/screens/menu/lil_menu_back.png"):
+    add dpa_get_file("image/screens/menu/lil_menu_back.png"):
         xalign 0.5
         yalign 0.5
 
@@ -222,7 +219,7 @@ screen dpa_menu_selector:
         yalign 0.30
         text_style "text_save_load"
         style "button_none"
-        action [ Function(toDefaultSettings), MainMenu() ]
+        action [ Function(dpa_to_default_settings), MainMenu() ]
 
     textbutton ["Сохранение"]:
         xalign 0.5
@@ -257,7 +254,7 @@ screen dpa_menu_selector:
         yalign 1.0
         style "button_none"
         text_style "text_save_load"
-        action [ Function(rollbackVisual), Return() ]
+        action [ Function(dpa_rollback_visual), Return() ]
  
 #Меню загрузки
 screen dpa_Load:
@@ -336,7 +333,7 @@ screen wip:
             ypos -6
 
         imagebutton:
-            idle getFile("image/screens/menu/wip.png")
+            idle dpa_get_file("image/screens/menu/wip.png")
             xpos 578
             ypos 152
             action NullAction()

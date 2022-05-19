@@ -8,8 +8,10 @@ screen th_for_read:
         size 80
 
 label th_demo_wip:
+    $ dpa_game_started = False
     scene black with dissolve2
     stop sound
     call screen th_for_read with dissolve
+    
     jump dpa_menu
     return

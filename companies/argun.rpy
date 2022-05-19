@@ -6,7 +6,7 @@ label argun:
 
 label argun_prolog:
     "Аргун."
-    $ dpaNewChapter(0, "Пролог: \"Аргун\"")
+    $ dpa_new_chapter(0, "Пролог: \"Аргун\"")
     kp "Готовься, твой “борт” вылетает завтра."
     scene gruz200 with dissolve
     play music song_na_mozdok volume 0.5 fadein 2
@@ -34,7 +34,7 @@ label argun_prolog:
     return
 
 label argun_day1:
-    $ dpaNewChapter(1, "Аргун:\"Вылет\"")
+    $ dpa_new_chapter(1, "Аргун:\"Вылет\"")
     scene mi8 with dissolve
     pause (2)
     "Днем мы уже грузились на «Борт»."
@@ -42,7 +42,7 @@ label argun_day1:
     play music mi8_1
     scene mi8_in1 with dissolve
     "Мы погрузили все вещи и спустя 15 минут взлетели."
-    call random_alert_call 
+    $ random_alert_visible = True
     "Пролетая Аргунское ущелье меня начало клонить в сон, не смотря на гул внутри вертолета..."
     scene black with dissolve2
     if canEventPlay(100):
@@ -69,8 +69,8 @@ label argun_day1:
         "Практически никаких звуков не было слышно."
         "Я начал чувствовать слабость по всему телу,{w} всё вокруг начало терять краски,{w} сознание затуманивалось."
         hide mi8_in2 with dissolve
-        $ renpy.movie_cutscene(getFile("movie/movie2.webm")) 
-        $ dpaNewChapter(1, "Аргун:\"Конец?\"")
+        $ renpy.movie_cutscene(dpa_get_file("movie/movie2.webm")) 
+        $ dpa_new_chapter(1, "Аргун:\"Конец?\"")
         scene anim prolog_1 with dissolve
         th "И это всё?"
         th "Я заканчиваю на этом? Прямо сейчас?"
@@ -88,7 +88,7 @@ label argun_day1:
 
 
 label argun_survived:
-    $ dpaNewChapter(1, "Аргун:\"Выживший\"")
+    $ dpa_new_chapter(1, "Аргун:\"Выживший\"")
     pause (2)
     play ambience ring fadein 2
     scene black with dissolve
