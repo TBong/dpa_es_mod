@@ -252,7 +252,7 @@ screen dpa_menu_selector:
         style "button_none"
         action ShowMenu('quit')
     
-    textbutton ["Откл. DPA GUI"]:
+    textbutton ["Откл. интерфейс мода"]:
         xalign 1.0
         yalign 1.0
         style "button_none"
