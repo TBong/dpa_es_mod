@@ -10,6 +10,7 @@ screen th_for_read:
 label th_demo_wip:
     scene black with dissolve2
     stop sound
+    stop music fadeout 4
     call screen th_for_read with dissolve
     jump dpa_menu
     return

@@ -34,6 +34,7 @@ init:
     $ om = Character (u'Старик', color="a16868", what_color="fff")
 
     #Музыка
+    $ grob_song1 = regMusic("grob_song1","Гражданская оборона - Моя оборона(минус)","sound/song/song_grob.mp3")
     $ fon1 = regMusic("fon1","NN","sound/song/fon1.mp3")
     $ song_crash= regMusic("song_crash","Свидетельство о смерти - чуть-чуть меня ","sound/song/song_а_little_bit_of_me.mp3")
     $ shturm = regMusic("shturm","Сергей Тимошенко - Штурм","sound/song/shturm.mp3")
@@ -47,9 +48,10 @@ init:
     $ song_rising_sun = regMusic("song_rising_sun","The Animals - House of the Rising Sun","sound/song/song_rising_sun.mp3")
     $ kombat = regMusic("kombat","Любэ - Комбат","sound/song/kombat.mp3")
 
-    $ menu_music = getMusic(getRandomItem(["song1","song2","song_menu","kombat","shturm"]))
+    $ menu_music = getMusic(getRandomItem(["song1","song2","song_menu","kombat","shturm","grob_song1"]))
 
     #Звуки окружения
+    $ mi8_lopasti = getFile("sound/ambinet/mi8_lopasti.mp3")
     $ mi8 = getFile("sound/ambinet/mi8.mp3")
     $ mi8_1 = getFile("sound/ambinet/mi8_1.mp3")
     $ uaz = getFile("sound/ambinet/uaz.mp3")
@@ -99,6 +101,11 @@ init:
     image palatka = getFile("image/bg/palatka_draw.jpg")
     image village_evening = getFile("image/bg/village_evening.jpg")
     image chechen_house = getFile("image/bg/chechen_house.jpg")
+
+    image derevnya_night = getFile("image/bg/derevnya_night.jpg")
+    image rescue = getFile("image/cg/rescue.jpg")
+    image rescue1 = getFile("image/cg/rescue1.jpg")
+    image mi8_flight = getFile("image/cg/mi8_flight.jpg")
 
     #Меню и иные приколы
     image menu_back = getFile(getRandomItem(["image/cg/menu_fon1.jpg","image/cg/menu_fon2.png"]))
