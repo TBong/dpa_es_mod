@@ -70,6 +70,7 @@ init:
     $ gren_expl1_close = getFile("sound/sfx/gren_expl1_close.ogg")
     $ ak74_shooting = getFile("sound/sfx/ak74_shooting.mp3")
     $ shooting_far = getFile("sound/sfx/shooting_far.mp3")
+    $ body_hit = getFile("sound/sfx/body_hit.mp3")
 
     #Пикчи позже будет норм сорт 
     image gazeta1 = im.FactorScale(getFile("image/cg/gazeta1_draw.jpg"),1.1)

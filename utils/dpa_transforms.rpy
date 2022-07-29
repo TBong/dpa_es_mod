@@ -16,3 +16,11 @@ transform leap(dyz=0.01, dxz=0.005, dt=.4):
     easeout dt*0.25 yzoom 1.0 xzoom 1.0
     easein dt*0.25 yzoom 1.0-dyz xzoom 1.0+dxz
     easeout dt*0.25 yzoom 1.0 xzoom 1.0
+
+transform stepping:
+    anchor (0.0, 0.0) pos (0.0, 0.0)
+    linear 0.2 pos (-5, -5)
+    linear 0.2 pos (0, 0)
+    linear 0.2 pos (5, -5)
+    linear 0.2 pos (0, 0)
+    repeat
