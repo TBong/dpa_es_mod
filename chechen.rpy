@@ -59,6 +59,7 @@ init:
     $ ring = getFile("sound/ambinet/ring.mp3")
 
     #Звуковые эфекты
+    $ ak74m_indoor = getFile("sound/sfx/ak74m_indoor.ogg")
     $ hit = getFile("sound/sfx/hit.mp3")
     $ pencil = getFile("sound/sfx/pencil-scratches.mp3")
     $ hitting_iron = getFile("sound/sfx/hitting_iron.mp3")
