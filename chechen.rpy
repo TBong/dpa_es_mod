@@ -2,12 +2,12 @@
 init -100 python:
 
     if to_steam:
-        default_dpa_path = ""
-    else:
         default_dpa_path = "mods/dpa_es_mod/"
+    else:
+        default_dpa_path = ""
         
 init 999:
-    define config.developer = True
+    define config.developer = False
 
 init:
     $ saveOldVisual()
@@ -47,6 +47,7 @@ init:
     $ song_na_mozdok = regMusic("song_na_mazdok","На Моздок","sound/song/song_na_mozdok.mp3") 
     $ song_rising_sun = regMusic("song_rising_sun","The Animals - House of the Rising Sun","sound/song/song_rising_sun.mp3")
     $ kombat = regMusic("kombat","Любэ - Комбат","sound/song/kombat.mp3")
+    $ song_muts = regMusic("song_muts","Тимур Муцураев - Если духом ты слаб","sound/song/song_muts.mp3")
 
     $ menu_music = getMusic(getRandomItem(["song1","song2","song_menu","kombat","shturm","grob_song1"]))
 
@@ -73,6 +74,7 @@ init:
     $ ak74_shooting = getFile("sound/sfx/ak74_shooting.mp3")
     $ shooting_far = getFile("sound/sfx/shooting_far.mp3")
     $ body_hit = getFile("sound/sfx/body_hit.mp3")
+    $ knife_hit = getFile("sound/sfx/knife_hit.mp3")
 
     #Пикчи позже будет норм сорт 
     image gazeta1 = im.FactorScale(getFile("image/cg/gazeta1_draw.jpg"),1.1)
@@ -106,6 +108,8 @@ init:
     image rescue = getFile("image/cg/rescue.jpg")
     image rescue1 = getFile("image/cg/rescue1.jpg")
     image mi8_flight = getFile("image/cg/mi8_flight.jpg")
+    image kazn = getFile("image/cg/kazn.jpg")
+    image next_day = getFile("image/screens/next_day.png")
 
     #Меню и иные приколы
     image menu_back = getFile(getRandomItem(["image/cg/menu_fon1.jpg","image/cg/menu_fon2.png"]))
