@@ -2,12 +2,12 @@
 init -100 python:
 
     if to_steam:
-        default_dpa_path = "mods/dpa_es_mod/"
-    else:
         default_dpa_path = ""
+    else:
+        default_dpa_path = "mods/dpa_es_mod/"
         
 init 999:
-    define config.developer = False
+    define config.developer = True
 
 init:
     $ saveOldVisual()
