@@ -152,6 +152,9 @@ init:
     image gen mournful = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_mournful.png")
     image gen laught = bakeSpriteDefaultPlusSizeSold(900,1080,0,0,"gen/core_v2.png","gen/emo/gen_laught.png")
 
+    image gen_new normal = bakeNewSpriteDefaultSizeSold (900,1080,0,0,"gen_new/gen_new_body.png","gen_new/emo/gen_new_standart.png")
+    image gen_new smile = bakeNewSpriteDefaultSizeSold (900,1080,0,0,"gen_new/gen_new_body.png","gen_new/emo/gen_new_smile.png")
+
     image rs furious = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_furious.png")
     image rs furious blik = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_furious.png", "romper_stomper/emo/rs_blik.png")
     image rs normal = bakeSpriteDefaultSizeSold(900,1080,0,0,"romper_stomper/rs_body.png","romper_stomper/emo/rs_standart.png")
